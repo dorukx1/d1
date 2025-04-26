@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>İsveç Tarihi</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="img/logo.webp" type="image/x-icon" />
+    <style>
+      :root {
+        --primary: #0b0072;
+        --secondary: #093a6b;
+        --accent: #ffd700;
+        --light: #ffffff;
+      }
+      .timeline {
+        position: relative;
+        margin: 0 auto;
+        padding: 4rem 0;
+        max-width: 980px;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        width: 4px;
+        height: 100%;
+        background: var(--primary);
+        transform: translateX(-50%);
+      }
+      .timeline-item {
+        position: relative;
+        width: 50%;
+        padding: 1.25rem 2.5rem;
+        cursor: auto;
+      }
+      .timeline-item:nth-child(odd) {
+        left: 0;
+        text-align: right;
+      }
+      .timeline-item:nth-child(even) {
+        left: 50%;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        top: 28px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--accent);
+        border: 4px solid #000;
+        z-index: 1;
+      }
+      .timeline-item:nth-child(odd)::before {
+        right: -12px;
+      }
+      .timeline-item:nth-child(even)::before {
+        left: -12px;
+      }
+      .timeline-card {
+        background: var(--secondary);
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+        color: var(--light);
+      }
+      .timeline-card h3 {
+        font-size: 1.25rem;
+        color: var(--accent);
+      }
+      .timeline-card p {
+        margin: 0;
+      }
+      .timeline-card.expanded {
+        transform: scale(1.08);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+      }
+      @media (max-width: 768px) {
+        .timeline::before {
+          left: 8px;
+        }
+        .timeline-item {
+          width: 100%;
+          padding-left: 3.75rem;
+          text-align: left !important;
+        }
+        .timeline-item:nth-child(even) {
+          left: 0;
+        }
+        .timeline-item::before {
+          left: 0;
+          right: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button id="scrollToTop" title="Yukarı Çık">&#8679;</button>
+    <div id="transition-overlay"></div>
+    <div id="top-animation">
+      <p style="padding-top: 20px">
+        Kuzey’in zarif incisi İsveç; yenilikçi düşünce, doğayla iç içe yaşam ve
+        yüksek refah seviyesiyle adını duyurur. Sessiz ormanları, huzurlu
+        kıyıları ve masalsı Kuzey Işıkları’yla ziyaretçilerine büyülü bir
+        atmosfer sunar. Tarihi, kültürü ve özgürlükçü toplumsal yapısıyla da hem
+        gözleri hem gönülleri fetheden bir coğrafyadır.
+      </p>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container">
+        <object
+          data="img/flag.webp"
+          type="image/webp"
+          style="max-width: 10%; border-radius: 0; padding-right: 1%"
+        >
+          Görsel yüklenemedi.
+        </object>
+        <a class="navbar-brand" href="index.html">İsveç</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavIndex"
+          aria-controls="navbarNavIndex"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse"
+          id="navbarNavIndex"
+          style="margin-top: 15px"
+        >
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Ana Sayfa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="history.html">Tarih</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="geography.html">Coğrafya</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="culture.html">Kültür</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tourism.html">Turizm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="education.html">Eğitim</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="economy.html">Ekonomi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="religion.html">Din</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cuisine.html">Mutfak</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="test.html">Test</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">İletişim</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Vertex</a>
+            </li>
+            <li class="nav-item dropdown">
+              <p
+                style="font-size: 20px; color: white"
+                class="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                ☰
+              </p>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="legends.html"
+                    style="color: white"
+                    >Efsaneler & Mitoloji</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="music.html"
+                    style="color: white"
+                    >Müzik & Eğlence</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="travel.html"
+                    style="color: white"
+                    >Popüler Gezi Rotaları</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="life.html" style="color: white"
+                    >Yaşam & Göçmenlik</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="daily.html"
+                    style="color: white"
+                    >Günlük Hayat & Kültür Şokları</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="digital.html"
+                    style="color: white"
+                    >Dijital İsveç Rehberi</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="yy.html" style="color: white"
+                    >Arama Yapın</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <header class="hero-section">
+      <video autoplay loop muted playsinline class="hero-video">
+        <source src="img/kale.mp4" />
+        Tarayıcınız bu videoyu desteklemiyor.
+      </video>
+      <div class="hero-content text-white text-center">
+        <h1 class= "display-4">İsveç'in Tarihi</h1>
+        <p class= "lead">
+          Viking döneminden modern çağın oluşumuna uzanan zengin bir geçmiş.
+        </p>
+      </div>
+    </header>
+    <main class="timeline" id="timeline">
+      <div
+        class="timeline-item"
+        data-title="İlk Yerleşimler ve Viking Çağı"
+        data-detail="Buzul Çağı’nın sona ermesiyle (MÖ 8000 civarı) İsveç topraklarında avcı‑toplayıcı topluluklar görülür. Tarım ve hayvancılıkla yerleşik düzene geçilir. 8.–11. yüzyıllar arasındaki Viking Çağı'nda İsveçli Vikingler, Doğu Avrupa'dan Bizans'a kadar ticari seferler düzenleyerek zengin ağlar kurar. 11. yüzyılın başlarında Hristiyanlık yayılır ve pagan inançlar geriler."
+      >
+        <div class="timeline-card p-3">
+          <h3>İlk Yerleşimler ve Viking Çağı</h3>
+          <p>
+            Buzul Çağı sonrası ilk yerleşim, Viking ticareti ve Hristiyanlık
+            etkisi.
+          </p>
+        </div>
+      </div>
+      <div
+        class="timeline-item"
+        data-title="Orta Çağ ve Kalmar Birliği"
+        data-detail="Orta Çağ’da Erik ve Sverker hanedanları güç mücadelesine girer. Kilise, eğitim ve hukukta etkisini artırır. 1397'de Danimarka öncülüğünde kurulan Kalmar Birliği, İskandinav ülkelerini tek çatı altında toplar. Ancak İsveçli soyluların direnci ve 1520'deki 'Stockholm Kan Banyosu' katliamı, Gustav Vasa'nın ayaklanmasına yol açar ve 1523'te İsveç bağımsızlığını ilan eder."
+      >
+        <div class="timeline-card p-3">
+          <h3>Orta Çağ ve Kalmar Birliği</h3>
+          <p>Hanedan savaşları, Kalmar Birliği ve bağımsızlık mücadelesi.</p>
+        </div>
+      </div>
+      <div
+        class="timeline-item"
+        data-title="Büyük Güç Dönemi"
+        data-detail="17. yüzyılda Kral Gustav II Adolf, İsveç'i Baltık çevresinde büyük güç konumuna taşır. Otuz Yıl Savaşı'ndaki askerî başarılar ülkenin Avrupa siyasetindeki etkisini artırır. Ancak 18. yüzyılda Büyük Kuzey Savaşı'nda Rusya’ya karşı alınan yenilgiler, İsveç’in bölgesel hâkimiyetini sona erdirir."
+      >
+        <div class="timeline-card p-3">
+          <h3>Büyük Güç Dönemi</h3>
+          <p>Gustav II Adolf’un yükselişi, Otuz Yıl Savaşı ve gerileme.</p>
+        </div>
+      </div>
+      <div
+        class="timeline-item"
+        data-title="Frihetstiden (Özgürlük Dönemi)"
+        data-detail="1718-1772 yılları arasında süren bu dönem, parlamenter yönetimin geliştiği, monarşinin zayıfladığı ve edebi, sanatsal ile bilimsel ilerlemelerin yaşandığı özgürlük çağıdır."
+      >
+        <div class="timeline-card p-3">
+          <h3>Frihetstiden (Özgürlük Dönemi)</h3>
+          <p>Parlamenter yönetim, kültürel ve bilimsel ilerlemeler.</p>
+        </div>
+      </div>
+
+      <div
+        class="timeline-item"
+        data-title="19. Yüzyıl"
+        data-detail="1809'da Rusya'ya kaybedilen Finlandiya, İsveç için büyük bir kayıptır. Napolyon Savaşları sırasında Fransız mareşal Jean‑Baptiste Bernadotte, XIV. Karl Johan adıyla tahta çıkar. 1814’te kurulan İsveç‑Norveç Birliği 1905'e kadar sürer ve barışçıl şekilde sona erer."
+      >
+        <div class="timeline-card p-3">
+          <h3>19. Yüzyıl</h3>
+          <p>Finlandiya kaybı, Bernadotte hanedanı, Norveç Birliği.</p>
+        </div>
+      </div>
+
+      <div
+        class="timeline-item"
+        data-title="20. Yüzyıl"
+        data-detail="I. ve II. Dünya Savaşları'nda tarafsız kalan İsveç, yıkımdan uzak kalarak kapsamlı bir refah devleti inşa eder. Sağlık, eğitim ve sosyal güvenlik sistemleri gelişir; kadın hakları ve göç alanında ilerlemeler kaydedilir."
+      >
+        <div class="timeline-card p-3">
+          <h3>20. Yüzyıl</h3>
+          <p>Tarafsızlık politikası, refah devleti, toplumsal gelişmeler.</p>
+        </div>
+      </div>
+      <div
+        class="timeline-item"
+        data-title="Günümüz"
+        data-detail="1995’te Avrupa Birliği’ne katılan İsveç, kron para birimini korur. IKEA, Volvo ve Spotify gibi markalarla ekonomik ve kültürel alanda dünya sahnesinde yer alır. Göç, çevre ve NATO üyeliği gibi konular çağdaş siyaset gündeminde öne çıkar."
+      >
+        <div class="timeline-card p-3">
+          <h3>Günümüz</h3>
+          <p>AB üyeliği, modern markalar, göç ve çevre politikaları.</p>
+        </div>
+      </div>
+      <div
+        class="timeline-item"
+        data-title="İklim Bilinci ve Yeşil Gelecek"
+        data-detail="İsveç, karbon salımını 2045'e kadar net sıfıra indirmeyi hedefler. Yenilenebilir enerjiye yaptığı yatırımlar ve atık yönetiminde döngüsel ekonomi yaklaşımıyla çevreci politikaların öncülerindendir."
+      >
+        <div class="timeline-card p-3">
+          <h3>İklim Bilinci ve Yeşil Gelecek</h3>
+          <p>Karbon salınımını azaltma hedefleri ve yenilenebilir enerji.</p>
+        </div>
+      </div>
+      <div
+        class="timeline-item"
+        data-title="Dijital Dönüşüm"
+        data-detail="İsveç, geniş bant internet erişimi, e‑devlet hizmetleri ve dijital eğitim çözümleriyle Avrupa'nın en dijitalleşmiş ülkeleri arasında yer alır. Start‑up ekosistemi, fintech ve oyun sektörüyle dikkat çeker."
+      >
+        <div class="timeline-card p-3">
+          <h3>Dijital Dönüşüm</h3>
+          <p>E‑devlet, dijital eğitim ve teknolojik altyapı.</p>
+        </div>
+      </div>
+      <div
+        class="timeline-item"
+        data-title="Toplumsal Eşitlik ve İnsan Hakları"
+        data-detail="İsveç, kadın‑erkek eşitliği ve LGBTQ+ hakları konusunda dünyanın en ilerici yasalarından bazılarını uygular. 1944’te eşcinselliğin suç olmaktan çıkarılması ve 2009’da eşcinsel evliliğin yasallaşması bu yaklaşımın önemli adımlarındandır."
+      >
+        <div class="timeline-card p-3">
+          <h3>Toplumsal Eşitlik ve İnsan Hakları</h3>
+          <p>LGBTQ+ hakları ve kadın‑erkek eşitliğinde ilerici uygulamalar.</p>
+        </div>
+      </div>
+
+      <div
+        class="timeline-item"
+        data-title="Geleceğe Bakış: Yenilik ve Sürdürülebilirlik"
+        data-detail="İsveç, inovasyon ve sürdürülebilir kalkınma stratejileriyle geleceğe emin adımlarla ilerliyor. Teknoloji, eğitim ve çevre politikaları öncü projelerle destekleniyor."
+      >
+        <div class="timeline-card p-3">
+          <h3>Geleceğe Bakış: Yenilik ve Sürdürülebilirlik</h3>
+          <p>İnovasyon, sürdürülebilir kalkınma ve teknolojik atılımlar.</p>
+        </div>
+      </div>
+    </main>
+
+    <main class="container my-5">
+      <article>
+        <h2>1. İlk Yerleşimler ve Viking Çağı</h2>
+        <p>
+          Buzul Çağı’nın sona ermesiyle (MÖ 8000 civarı) İsveç topraklarında
+          avcı-toplayıcı topluluklar yaşamaya başlar. Tarım ve hayvancılık
+          gelişince yerleşik hayata geçilir. 8. yüzyıl itibarıyla başlayan
+          Viking Çağı’nda, özellikle İsveçli Vikingler Doğu Avrupa ve Bizans’a
+          kadar uzanan ticari seferler düzenler. 11. yüzyılın başlarında
+          Hristiyanlığın yayılmasıyla bölgedeki pagan inançlar büyük ölçüde
+          geriler.
+        </p>
+        <img
+          style="height: 500px"
+          class="zoom"
+          src="img/ship.webp"
+          -fluid
+          my-4
+          animate
+          alt="Viking Gemisi"
+        />
+        <br /><br />
+        <h2>2. Orta Çağ ve Kalmar Birliği</h2>
+        <p>
+          Orta Çağ’da farklı hanedanlar (Erik ve Sverker gibi) güç mücadelesine
+          girerken, kilise eğitim ve hukuk alanında etkisini artırır. 1397’de
+          kurulan Kalmar Birliği, Danimarka egemenliğinde ilerler ancak İsveç
+          soylularının tepkisi nedeniyle uzun süre istikrar sağlanamaz.
+          1520’deki “Stockholm Kan Banyosu” katliamı, Gustav Vasa’nın
+          ayaklanmasıyla 1523’te İsveç bağımsızlığını ilan etmesine yol açar.
+        </p>
+
+        <h2>3. Büyük Güç Dönemi ve Gerileme (17.-18. Yüzyıllar)</h2>
+        <p>
+          17. yüzyılda Kral Gustav II Adolf yönetimi, İsveç’i Baltık çevresinde
+          büyük güç konumuna taşır. Otuz Yıl Savaşı’ndaki askerî başarılar,
+          ülkenin Avrupa siyasetindeki etkisini artırırken, 18. yüzyılda Büyük
+          Kuzey Savaşı’nda alınan yenilgiler bu hâkimiyeti sonlandırır.
+        </p>
+
+        <h2>4. 19. Yüzyıl: Bernadotte Hanedanı ve Norveç Birliği</h2>
+        <p>
+          1809’da Rusya’ya kaybedilen Finlandiya, İsveç için büyük bir toprak
+          kaybıdır. Napolyon Savaşları sırasında Fransız Mareşal Jean-Baptiste
+          Bernadotte, XIV. Karl Johan adıyla tahta çıkar. 1814’te kurulan
+          İsveç-Norveç Birliği, 1905’e kadar sürer ve barışçıl şekilde sona
+          erer.
+        </p>
+
+        <h2>5. 20. Yüzyıl: Tarafsızlık ve Refah Devleti</h2>
+        <p>
+          I. ve II. Dünya Savaşları’nda tarafsız kalan İsveç, savaş yıkımından
+          uzak kalarak sosyal refah politikalarını geliştirir. Bu dönemde
+          kapsamlı sağlık, eğitim ve sosyal güvenlik sistemleri inşa edilir;
+          kadın hakları ve göç konularında da önemli adımlar atılır.
+        </p>
+
+        <h2>6. Günümüz İsveç’i</h2>
+        <p>
+          1995’te Avrupa Birliği’ne katılan İsveç, kendi para birimi olan Kron’u
+          korur. IKEA, Volvo ve Spotify gibi markalarla ekonomik ve kültürel
+          alanda dünya sahnesinde yer alırken, göç, çevre ve NATO üyeliği gibi
+          konular çağdaş siyaset gündeminde öne çıkar.
+        </p>
+      </article>
+    </main>
+
+    <center>
+      <footer class="text-white text-center py-3">
+        <div class="container">
+          <pre>&copy; 2025 hmbrgrtr. Tüm hakları saklıdır.</pre>
+        </div>
+      </footer>
+    </center>
+
+    <div id="custom-scrollbar-track">
+      <div id="custom-scrollbar-thumb"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+      document.querySelectorAll(".timeline-item").forEach((item) => {
+        const card = item.querySelector(".timeline-card");
+        const originalHTML = card.innerHTML;
+
+        item.addEventListener("mouseenter", () => {
+          card.classList.add("expanded");
+          const title = item.dataset.title;
+          const detail = item.dataset.detail;
+          card.innerHTML = `<h3>${title}</h3><p>${detail}</p>`;
+        });
+
+        item.addEventListener("mouseleave", () => {
+          card.classList.remove("expanded");
+          card.innerHTML = originalHTML;
+        });
+      });
+    </script>
+  </body>
+</html>

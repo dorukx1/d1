@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>İsveç'e Hoş Geldiniz</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="img/logo.webp" type="image/x-icon" />
+    <style>
+      .slider {
+        width: 80%;
+        max-width: 800px;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        background: #fff;
+      }
+
+      .slides {
+        display: flex;
+        transition: transform 1s cubic-bezier(0.65, 0.05, 0.36, 1);
+      }
+
+      .slides img {
+        width: 100%;
+        flex-shrink: 0;
+        border-radius: 0;
+        box-shadow: none;
+        transform: scale(1);
+        transition: transform 1s cubic-bezier(0.65, 0.05, 0.36, 1);
+      }
+
+      .slides img:hover {
+        box-shadow: none;
+        transform: scale(1.05);
+        animation: shake 0s;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="scrollToTop" title="Yukarı Çık">&#8679;</button>
+    <div id="transition-overlay"></div>
+    <div id="top-animation">
+      <p style="padding-top: 20px">
+        Kuzey’in zarif incisi İsveç; yenilikçi düşünce, doğayla iç içe yaşam ve
+        yüksek refah seviyesiyle adını duyurur. Sessiz ormanları, huzurlu
+        kıyıları ve masalsı Kuzey Işıkları’yla ziyaretçilerine büyülü bir
+        atmosfer sunar. Tarihi, kültürü ve özgürlükçü toplumsal yapısıyla da hem
+        gözleri hem gönülleri fetheden bir coğrafyadır.
+      </p>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container">
+        <object
+          data="img/flag.webp"
+          type="image/webp"
+          style="max-width: 10%; border-radius: 0; padding-right: 1%"
+        >
+          Görsel yüklenemedi.
+        </object>
+
+        <a class="navbar-brand" href="index.html">İsveç</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavIndex"
+          aria-controls="navbarNavIndex"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse"
+          id="navbarNavIndex"
+          style="margin-top: 15px"
+        >
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Ana Sayfa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="history.html">Tarih</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="geography.html">Coğrafya</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="culture.html">Kültür</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tourism.html">Turizm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="education.html">Eğitim</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="economy.html">Ekonomi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="religion.html">Din</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cuisine.html">Mutfak</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="test.html">Test</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">İletişim</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Vertex</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <p
+                style="font-size: 20px; color: white"
+                class="nav-link dropdown-toggle"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                ☰
+              </p>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="legends.html"
+                    style="color: white"
+                    >Efsaneler & Mitoloji</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="music.html"
+                    style="color: white"
+                    >Müzik & Eğlence</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="travel.html"
+                    style="color: white"
+                    >Popüler Gezi Rotaları</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="life.html" style="color: white"
+                    >Yaşam & Göçmenlik</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="daily.html"
+                    style="color: white"
+                    >Günlük Hayat & Kültür Şokları</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="digital.html"
+                    style="color: white"
+                    >Dijital İsveç Rehberi</a
+                  >
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="yy.html" style="color: white"
+                    >Arama Yapın</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+
+    <header class="hero-section">
+      <video autoplay loop muted playsinline class="hero-video">
+        <source src="img/IKEA.mp4" />
+        Tarayıcınız bu videoyu desteklemiyor.
+      </video>
+      <div class="hero-content text-white text-center">
+        <h1 class="display-4">İsveç'e Hoş Geldiniz</h1>
+        <p class="lead">
+          Kuzey Avrupa'nın modern yaşamıyla, zengin tarih ve kültürünün
+          buluştuğu ülke.
+        </p>
+        <a href="history.html"
+          ><button class="glow-on-hover" style="font-size: 17px" type="button">
+            Gezintiye Başlayın!
+          </button></a
+        >
+      </div>
+    </header>
+
+    <main class="container my-5">
+      <article>
+        <h2>Genel Bakış</h2>
+        <p>
+          Kuzey Avrupa’nın İskandinav yarımadasında yer alan bu ülke, zengin
+          doğal kaynakları, geniş ormanları, berrak gölleri ve uzun kıyı
+          şeritleriyle dikkat çeken; aynı zamanda modern altyapısı, ileri
+          teknolojik yatırımları ve kapsamlı sosyal refah sistemiyle
+          uluslararası arenada örnek teşkil eden bir medeniyet modelidir. Ülke,
+          doğal güzellikleri ve kültürel çeşitliliğiyle ekonomik ve sosyal
+          alanda sürdürülebilir gelişmeyi hedeflemekte, modern yaşamın
+          gereksinimlerini geleneksel değerlerle harmanlayan bir yapı
+          sergilemektedir.
+        </p>
+
+        <h2>Tarih ve Yönetim</h2>
+        <p>
+          Derin tarihsel kökleri, Orta Çağ’dan günümüze uzanan gelişim süreci ve
+          parlamenter anayasal monarşi temelli yönetim sistemiyle öne çıkan bu
+          ülke, hukukun üstünlüğü ve şeffaf yönetim ilkeleri doğrultusunda idare
+          edilmektedir. Tarihsel mirası, çağdaş demokrasi anlayışı ve
+          uluslararası arenada saygınlığı ile ülkenin yönetim yapısı, iç ve dış
+          politikada kararlı bir çizgi izlemekte, temel hak ve özgürlüklerin
+          korunmasına özen gösterilmektedir.
+        </p>
+
+        <h2>Ekonomi ve Sosyal Refah</h2>
+        <p>
+          Üretime dayalı dinamik ekonomik modeli, yüksek teknolojik altyapısı ve
+          kapsamlı sosyal refah politikaları sayesinde, eğitim, sağlık ve çevre
+          alanlarında yürütülen yatırımlarla vatandaşlarına yüksek yaşam
+          standartları sunan bu ülke, ekonomik istikrarı ve sosyal dengesi ile
+          uluslararası rekabette öne çıkmaktadır. Sürdürülebilir kalkınma
+          hedefleri doğrultusunda gerçekleştirilen stratejik planlamalar,
+          ülkenin ekonomik büyümesini ve sosyal refahını sağlam temellere
+          dayandırmaktadır.
+        </p>
+        <br /><br />
+        <center>
+          <div class="slider">
+            <div class="slides" id="slides">
+              <img src="img/r1.webp" alt="Slide 1" />
+              <img src="img/r2.webp" alt="Slide 2" />
+              <img src="img/r3.webp" alt="Slide 3" />
+              <img src="img/r4.webp" alt="Slide 4" />
+              <img src="img/r5.webp" alt="Slide 5" />
+              <img src="img/r6.webp" alt="Slide 6" />
+            </div>
+          </div>
+        </center>
+        <br />
+
+        <div style="text-align: center">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <br /><br />
+        <h2>Kültür ve Eğitim</h2>
+        <p>
+          Zengin kültürel mirası, modern eğitim kurumları ve bilimsel araştırma
+          merkezleriyle desteklenen ülke, sanatta, edebiyatta ve tasarım
+          alanlarında yenilikçi çalışmalar yaparak, kültürel çeşitliliği ve
+          entelektüel birikimi gelecek nesillere aktarmada önemli bir rol
+          üstlenmektedir. Kültürel etkinlikler, uluslararası iş birlikleri ve
+          eğitimde yüksek standartlar, ülkenin uluslararası arenadaki prestijini
+          artıran temel unsurlardandır.
+        </p>
+
+        <h2>Çevre ve Sürdürülebilirlik</h2>
+        <p>
+          Doğal kaynakların etkin yönetimi, yenilenebilir enerji kullanımı ve
+          çevre koruma politikalarının titizlikle uygulanması, ekolojik denge ve
+          sürdürülebilir kalkınma hedeflerinin gerçekleştirilmesinde ön planda
+          tutulmaktadır. Çevresel duyarlılığın yüksek olduğu bu yapı, uzun
+          vadeli stratejik planlamalarla doğal yaşam alanlarını koruyarak,
+          gelecek nesillere temiz ve yaşanabilir bir çevre bırakmayı
+          amaçlamaktadır.
+        </p>
+
+        <h2>Uluslararası İlişkiler</h2>
+        <p>
+          Tarafsızlık ilkesine dayalı barışçıl dış politikası, uluslararası iş
+          birliğine verdiği önem ve diplomatik ilişkilerde benimsediği
+          şeffaflık, ülkenin küresel güvenlik, ticaret ve kültürel değişim
+          alanlarındaki stratejik ortaklıklarını güçlendirmekte; böylece
+          uluslararası arenada güvenilir ve saygın bir aktör olarak konumunu
+          pekiştirmektedir.
+        </p>
+        <h1>İsveç Sokaklarında 360° Sanal Tura Ne Dersiniz?</h1>
+        <h3>Yalnızca 3 Dakikada Sanal Tur Keyfi!</h3>
+        <center>
+          <iframe
+            id="vid"
+            style="width: 960px; height: 540px"
+            title="Stockholm Guided Tour in 360°: One Day in Stockholm Preview"
+            src="https://www.youtube.com/embed/fKeHBMqd6Vk?feature=oembed"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen=""
+          ></iframe>
+        </center>
+      </article>
+    </main>
+    <center>
+      <footer class="text-white text-center py-3">
+        <div class="container">
+          <pre>&copy; 2025 hmbrgrtr. Tüm hakları saklıdır.</pre>
+        </div>
+      </footer>
+    </center>
+    <div id="custom-scrollbar-track">
+      <div id="custom-scrollbar-thumb"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+      const slidesContainer = document.getElementById("slides");
+      const images = slidesContainer.querySelectorAll("img");
+      const totalSlides = images.length;
+      let currentIndex = 0;
+
+      function updateSlide() {
+        // Kaydırma
+        slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        // Zoom için active sınıfı ekle/kaldır
+        images.forEach((img, idx) => {
+          img.classList.toggle("active", idx === currentIndex);
+        });
+      }
+
+      // Başlangıçta ilk slaytı ayarla
+      updateSlide();
+
+      // Her 3 saniyede bir slayt değiştir
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlide();
+      }, 3000);
+    </script>
+  </body>
+</html>

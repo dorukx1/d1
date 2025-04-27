@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>Tam Şerit 3D Cihaz Galerisi</title>
+
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+  </head>
+  <body>
+    <div class="bg">
+      <nav class="site-nav">
+        <a href="../index.html" class="logo">Ostim Şehit Alper ZOR MTAL</a>
+
+        <input type="checkbox" id="nav-toggle" />
+        <label for="nav-toggle" class="yer">
+          <span></span><span></span><span></span>
+        </label>
+
+        <ul class="menu">
+          <li><a href="../bots/index.html">Bots</a></li>
+          <li><a href="../donanim/index.html">Donanım</a></li>
+          <li><a href="../mobil/index.html">Mobil - Akıllı Saat</a></li>
+          <li><a href="../konsol/index.html">Konsol</a></li>
+          <li><a href="../Vr-r/index.html">Vr - Router</a></li>
+        </ul>
+      </nav>
+
+      <div class="gallery">
+        <div class="model-card">
+          <model-viewer
+            src="apple_vision_pro.glb"
+            shadow-intensity="1"
+            camera-controls
+            ar
+          ></model-viewer>
+          <div class="caption">Apple Vision Pro</div>
+        </div>
+
+        <div class="model-card">
+          <model-viewer
+            src="meta_quest_3.glb"
+            shadow-intensity="1"
+            camera-controls
+            ar
+          ></model-viewer>
+          <div class="caption">Meta Quest 3</div>
+        </div>
+
+        <div class="model-card">
+          <model-viewer
+            src="router%20(1).glb"
+            shadow-intensity="1"
+            camera-controls
+            ar
+          ></model-viewer>
+          <div class="caption">Router (Alt)</div>
+        </div>
+
+        <div class="model-card">
+          <model-viewer
+            src="router.glb"
+            shadow-intensity="1"
+            camera-controls
+            ar
+          ></model-viewer>
+          <div class="caption">Router</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

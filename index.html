@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vertex</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+        font-family: "Arial", sans-serif;
+      }
+      .video-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+      }
+
+      .background-video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: translate(-50%, -50%);
+      }
+
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0);
+        z-index: -1;
+      }
+
+      .center-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #fff;
+        z-index: 1;
+      }
+      .center-container h1 {
+        font-size: 3rem;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 15px 30px;
+        margin: 10px;
+        font-size: 1.2rem;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.4);
+        border: 2px solid #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: background 0.3s, color 0.3s;
+      }
+      .btn:hover {
+        color: #000;
+        background: #fff;
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        transition: left 650ms;
+      }
+      .btn:hover::before {
+        left: 100%;
+      }
+
+      /* Loader ekranı arkaplan */
+#loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0d1b2a; /* Koyu arka plan */
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dönen yükleme simgesi */
+#loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #ffc107; /* Sarı */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+    </style>
+  </head>
+  <body>
+<!-- Loader -->
+<div id="loader-wrapper">
+  <div id="loader"></div>
+</div>
+
+    <div class="video-container">
+      <video autoplay loop muted playsinline class="background-video">
+        <source src="vadi.mp4" type="video/mp4" />
+        Tarayıcınız video formatını desteklemiyor.
+      </video>
+    </div>
+    <div class="overlay"></div>
+    <div class="center-container">
+      <h1>Giriş Ekranı</h1>
+      <a href="İsveç/index.html"><button class="btn">İsveç</button></a>
+      <a href="Projem/index.html"><button class="btn">Bilgisayar Parçaları</button></a>
+      <a href="Sunu/index.html"><button class="btn">3D Modeller</button></a>
+    </div><script>
+      window.addEventListener("load", function () {
+        const loader = document.getElementById("loader-wrapper");
+        loader.style.opacity = "0";
+        setTimeout(() => loader.style.display = "none", 500);
+      });
+    </script>
+    
+  </body>
+</html>

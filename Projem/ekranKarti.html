@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ekran Kartı Tanıtımı - Vertex Bilgisayar Parçaları</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="../logo.png" type="image/x-icon" />
+
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer@latest"
+    ></script>
+  </head>
+  <body>
+    <canvas id="bgCanvas" class="bg-canvas"></canvas>
+
+    <button id="scrollToTop" title="Yukarı Çık">&#8679;</button>
+    <div id="transition-overlay"></div>
+
+    <header>
+      <nav class="site-nav">
+        <a
+          href="../index.html"
+          class="logo"
+          style="text-decoration: none; color: white"
+        >
+          <img src="../logo.png" alt="Vertex logo" />
+        </a>
+        <input type="checkbox" id="nav-toggle" />
+        <label for="nav-toggle" class="hamburger">&#9776;</label>
+
+        <ul class="menu">
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="hakkimizda.html">Hakkımızda</a></li>
+          <li><a href="iletisim.html">İletişim</a></li>
+
+          <li class="dropdown">
+            <a href="#">Parçalar ▾</a>
+            <ul class="submenu">
+              <li><a href="anakart.html">Anakart</a></li>
+              <li><a href="islemci.html">İşlemci</a></li>
+              <li><a href="ekranKarti.html">Ekran Kartı</a></li>
+              <li><a href="ram.html">RAM</a></li>
+              <li><a href="depolama.html">Depolama</a></li>
+              <li><a href="gucKaynagi.html">Güç Kaynağı</a></li>
+              <li><a href="sogutma.html">Soğutma</a></li>
+              <li><a href="kasa.html">Kasa</a></li>
+              <li><a href="monitor.html">Monitör</a></li>
+              <li><a href="aksesuar.html">Aksesuarlar</a></li>
+            </ul>
+          </li>
+
+          <li><a href="yy.html" class="search-btn">Arama</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <center>
+        <div class="content">
+          <h1>Ekran Kartı</h1>
+          <p>
+            Ekran kartı, bilgisayarın görsel performansını belirleyen en kritik
+            donanım bileşenlerinden biridir. Grafik İşlem Birimi (GPU) sayesinde
+            karmaşık hesaplamaları paralel şekilde gerçekleştirir; bu sayede
+            modern oyunlardan profesyonel grafik tasarım ve video düzenleme
+            uygulamalarına kadar geniş bir yelpazede üstün performans sunar.
+          </p>
+          <img
+            class="zoom"
+            src="images/ekranKarti.png"
+            alt="Ekran Kartı Görseli"
+          />
+
+          <h2>Ekran Kartının Temel Bileşenleri</h2>
+          <p>
+            Ekran kartı, birbirini tamamlayan birkaç önemli bileşenden oluşur:
+          </p>
+          <br /><br />
+          <h3>1️⃣ GPU (Grafik İşlem Birimi)</h3>
+          <p>
+            GPU, ekran kartının beyni olarak görev yapar. Binlerce çekirdeği
+            sayesinde paralel işlem yapar ve yüksek çözünürlüklü grafiklerin
+            hesaplanmasında büyük rol oynar.
+          </p>
+          <br /><br />
+          <h3>2️⃣ VRAM (Video Bellek)</h3>
+          <p>
+            VRAM, grafik verilerini geçici olarak depolayan yüksek hızlı bir
+            bellektir. Yüksek çözünürlüklü ve detaylı görseller için geniş VRAM
+            kapasitesi, performansın sürdürülebilirliğinde önemlidir.
+          </p>
+          <br /><br />
+          <h3>3️⃣ Soğutma Sistemi</h3>
+          <p>
+            Ekran kartları, yoğun çalışma sırasında ısınabileceğinden etkili
+            soğutma sistemlerine ihtiyaç duyar. Fanlar, ısı boruları ve ısı
+            emici plakalar, kartın optimum sıcaklıkta çalışmasını sağlar.
+          </p>
+          <br /><br />
+          <h3>4️⃣ Güç Bağlantıları</h3>
+          <p>
+            Yüksek performanslı ekran kartları, ek güç gereksinimi duyabilir. Bu
+            nedenle, kart üzerinde genellikle 6-pin veya 8-pin güç bağlantıları
+            yer alır ve bu, sistemin kararlı çalışması açısından kritik öneme
+            sahiptir.
+          </p>
+          <br /><br />
+          <h3>5️⃣ Çıkış Portları</h3>
+          <p>
+            HDMI, DisplayPort, DVI ve bazen VGA gibi farklı çıkış portları
+            sayesinde ekran kartı, çeşitli monitör ve diğer görüntü aygıtlarına
+            bağlantı kurar.
+          </p>
+          <br /><br />
+          <center>
+            <div class="modelsite">
+              <iframe
+                src="https://hmbrgr.github.io/Models/ekrankarti.html"
+              ></iframe>
+            </div>
+          </center>
+          <br /><br />
+          <h2>Ekran Kartı Seçerken Dikkat Edilmesi Gerekenler</h2>
+          <h3>Seçiminizi yaparken göz önünde bulundurmanız gerekenler:</h3>
+          ✔ <strong>GPU Performansı:</strong> İhtiyacınız olan grafik işlemleri
+          için yeterli güç sunuyor mu?<br />
+          ✔ <strong>VRAM Kapasitesi:</strong> Oyunlar ve grafik uygulamaları
+          için yeterli bellek alanı var mı?<br />
+          ✔ <strong>Soğutma Verimliliği:</strong> Uzun süreli kullanımlarda dahi
+          sıcaklık kontrolünü sağlayabiliyor mu?<br />
+          ✔ <strong>Güç Gereksinimleri:</strong> Sisteminizin güç kaynağı ekran
+          kartının ihtiyaçlarını karşılayabiliyor mu?<br />
+          ✔ <strong>Bağlantı Çeşitliliği:</strong> Farklı monitör ve cihazlarla
+          uyumlu çıkış portlarına sahip mi?<br />
+          ✔ <strong>Modern Teknolojiler:</strong> Ray tracing, DLSS gibi güncel
+          grafik teknolojilerini destekliyor mu?<br />
+          <br /><br />
+          <h2>Ekran Kartı Çeşitleri</h2>
+          <h3>🎮 1. Oyun Kartları</h3>
+          <p>
+            Yüksek performanslı GPU ve geniş VRAM ile donatılmış bu kartlar, en
+            yeni oyunları yüksek ayarlarda çalıştırmayı hedefler. Gelişmiş
+            soğutma sistemleriyle uzun süreli performans sunar.
+          </p>
+          <h3>💻 2. Profesyonel Kartlar</h3>
+          <p>
+            Grafik tasarım, video düzenleme ve 3D modelleme gibi profesyonel
+            uygulamalar için optimize edilmiş bu kartlar; renk doğruluğu,
+            stabilite ve yüksek hesaplama gücü sunar.
+          </p>
+          <h3>🖥 3. Türev Kartlar</h3>
+          <p>
+            Günlük kullanım ve düşük seviye oyunlar için ideal olan bu ekran
+            kartları, orta seviye performans ve enerji verimliliği sağlar.
+          </p>
+          <a href="ram.html">
+            <button class="glow-on-hover" style="font-size: 17px" type="button">
+              RAM Sayfası İçin Tıklayın
+            </button>
+          </a>
+        </div>
+      </center>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Vertex Bilgisayar Parçaları. Tüm hakları saklıdır.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

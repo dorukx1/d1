@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ana Sayfa</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      :root {
+        --bg: #0d0f1b;
+        --radius: 0.85rem;
+        --shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+        --accent-mobil: #4ade80;
+        --accent-bots: #60a5fa;
+        --accent-donanim: #facc15;
+        --accent-konsol: #f472b6;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--bg) url(mtal.png) center/cover no-repeat;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        color: #eaeff3;
+        min-height: 100vh;
+        padding: 1.5rem;
+      }
+
+      .page-content {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 4.5rem;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        width: 100%;
+      }
+
+      /* Kart stili */
+      .model-card {
+        position: relative;
+        background-color: rgba(20, 22, 34, 0.9);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        overflow: hidden;
+      }
+
+      /* Üstte ince renk şeridi */
+      .model-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: currentColor;
+        opacity: 0.9;
+      }
+
+      /* Başlık */
+      .model-card h3 {
+        position: relative;
+        z-index: 1;
+        font-size: 1.25rem;
+        color: currentColor;
+        margin: 0;
+      }
+
+      /* Her karta özgü accent renk */
+      .model-card.mobil {
+        color: var(--accent-mobil);
+      }
+      .model-card.bots {
+        color: var(--accent-bots);
+      }
+      .model-card.donanim {
+        color: var(--accent-donanim);
+      }
+      .model-card.konsol {
+        color: var(--accent-konsol);
+      }
+
+      /* Hover efektleri */
+      .model-card:hover {
+        transform: translateY(-6px);
+        background-color: rgba(20, 22, 34, 0.98);
+      }
+
+      /* ===== NAVBAR ===== */
+      .site-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #141622;
+        padding: 0.8rem 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+      }
+
+      .site-nav .logo {
+        color: var(--accent-mobil);
+        font-weight: 600;
+        font-size: 1.25rem;
+        text-decoration: none;
+      }
+
+      .site-nav .menu {
+        list-style: none;
+        display: flex;
+        gap: 1.3rem;
+      }
+
+      .site-nav .menu a {
+        color: #eaeff3;
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 0.35rem 0.2rem;
+        position: relative;
+      }
+
+      .site-nav .menu a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0%;
+        height: 2px;
+        background: var(--accent-mobil);
+        transition: width 0.3s ease;
+      }
+
+      .site-nav .menu a:hover::after {
+        width: 100%;
+      }
+
+      #nav-toggle {
+        display: none;
+      }
+      .yer {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+      }
+      .yer span {
+        width: 26px;
+        height: 3px;
+        background: #eaeff3;
+        border-radius: 3px;
+      }
+
+      /* Tablet & mobil düzenlemeleri */
+      @media (max-width: 1024px) {
+        .gallery {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+      }
+
+      @media (max-width: 700px) {
+        .yer {
+          display: flex;
+        }
+        .site-nav .menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: #141622;
+          flex-direction: column;
+          align-items: center;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.35s ease;
+        }
+        #nav-toggle:checked + label + .menu {
+          max-height: 240px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="site-nav">
+      <a href="../index.html" class="logo">Ana Sayfa</a>
+      <input type="checkbox" id="nav-toggle" />
+      <label for="nav-toggle" class="yer">
+        <span></span><span></span><span></span>
+      </label>
+      <ul class="menu">
+        <li><a href="#galeri">Kategoriler</a></li>
+      </ul>
+    </nav>
+
+    <!-- ANA İÇERİK -->
+    <div class="page-content">
+      <div class="gallery" id="galeri">
+        <a href="mobil/index.html" class="model-card mobil"><h3>Mobil - Akıllı Saat</h3></a>
+        <a href="bots/index.html" class="model-card bots"><h3>Bots</h3></a>
+        <a href="donanim/index.html" class="model-card donanim"
+          ><h3>Donanım</h3></a
+        >
+        <a href="konsol/index.html" class="model-card konsol"
+          ><h3>Konsol</h3></a
+        >
+        <a href="Vr-r/index.html" class="model-card Vr-r"
+          ><h3>VR - Router</h3></a
+        >
+      </div>
+    </div>
+  </body>
+</html>

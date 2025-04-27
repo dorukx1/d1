@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Makale Arama - Vertex</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="../logo.png" type="image/x-icon" />
+    <style></style>
+  </head>
+  <body>
+    <canvas id="bgCanvas" class="bg-canvas"></canvas>
+
+    <button id="scrollToTop" title="Yukarı Çık">&#8679;</button>
+    <div id="transition-overlay"></div>
+    <header>
+      <nav class="site-nav">
+        <a
+          href="../index.html"
+          class="logo"
+          style="text-decoration: none; color: white"
+        >
+          <img src="../logo.png" alt="Vertex logo" />
+        </a>
+        <input type="checkbox" id="nav-toggle" />
+        <label for="nav-toggle" class="hamburger">&#9776;</label>
+
+        <ul class="menu">
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="hakkimizda.html">Hakkımızda</a></li>
+          <li><a href="iletisim.html">İletişim</a></li>
+
+          <li class="dropdown">
+            <a href="#">Parçalar ▾</a>
+            <ul class="submenu">
+              <li><a href="anakart.html">Anakart</a></li>
+              <li><a href="islemci.html">İşlemci</a></li>
+              <li><a href="ekranKarti.html">Ekran Kartı</a></li>
+              <li><a href="ram.html">RAM</a></li>
+              <li><a href="depolama.html">Depolama</a></li>
+              <li><a href="gucKaynagi.html">Güç Kaynağı</a></li>
+              <li><a href="sogutma.html">Soğutma</a></li>
+              <li><a href="kasa.html">Kasa</a></li>
+              <li><a href="monitor.html">Monitör</a></li>
+              <li><a href="aksesuar.html">Aksesuarlar</a></li>
+            </ul>
+          </li>
+
+          <li><a href="yy.html" class="search-btn">Arama</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="search-section">
+        <label for="searchInput"
+          ><b>Daha fazlası için internette arama yapın!</b></label
+        >
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Örneğin: Uzay, Atatürk, Yazılım..."
+        />
+        <button id="searchButton">Ara</button>
+
+        <div id="loading"></div>
+
+        <h3 id="resultHeading" style="display: none">Sonuç:</h3>
+        <div id="result"></div>
+
+        <h3 id="articleHeading" style="display: none">Makale İçeriği:</h3>
+        <div id="articleContent"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Vertex Bilgisayar Parçaları. Tüm hakları saklıdır.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

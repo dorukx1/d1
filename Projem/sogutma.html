@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soğutma Tanıtımı - Vertex Bilgisayar Parçaları</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="../logo.png" type="image/x-icon" />
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer@latest"
+    ></script>
+  </head>
+  <body>
+    <canvas id="bgCanvas" class="bg-canvas"></canvas>
+
+    <button id="scrollToTop" title="Yukarı Çık">&#8679;</button>
+    <div id="transition-overlay"></div>
+
+    <header>
+      <nav class="site-nav">
+        <a
+          href="../index.html"
+          class="logo"
+          style="text-decoration: none; color: white"
+        >
+          <img src="../logo.png" alt="Vertex logo" />
+        </a>
+        <input type="checkbox" id="nav-toggle" />
+        <label for="nav-toggle" class="hamburger">&#9776;</label>
+
+        <ul class="menu">
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="hakkimizda.html">Hakkımızda</a></li>
+          <li><a href="iletisim.html">İletişim</a></li>
+
+          <li class="dropdown">
+            <a href="#">Parçalar ▾</a>
+            <ul class="submenu">
+              <li><a href="anakart.html">Anakart</a></li>
+              <li><a href="islemci.html">İşlemci</a></li>
+              <li><a href="ekranKarti.html">Ekran Kartı</a></li>
+              <li><a href="ram.html">RAM</a></li>
+              <li><a href="depolama.html">Depolama</a></li>
+              <li><a href="gucKaynagi.html">Güç Kaynağı</a></li>
+              <li><a href="sogutma.html">Soğutma</a></li>
+              <li><a href="kasa.html">Kasa</a></li>
+              <li><a href="monitor.html">Monitör</a></li>
+              <li><a href="aksesuar.html">Aksesuarlar</a></li>
+            </ul>
+          </li>
+
+          <li><a href="yy.html" class="search-btn">Arama</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <center>
+        <div class="content">
+          <h1>Soğutma</h1>
+          <p>
+            Soğutma sistemleri, bilgisayar bileşenlerinin yüksek performansla
+            çalışırken ürettiği ısının kontrol altında tutulmasını sağlar. Hem
+            hava hem de sıvı soğutma çözümleri, sistem stabilitesi ve bileşen
+            ömrü açısından kritik rol oynar.
+          </p>
+          <img class="zoom" src="images/sogutma.png" alt="Soğutma Görseli" />
+
+          <h2>Soğutma Sistemlerinin Temel Özellikleri</h2>
+          <p>
+            Etkili bir soğutma sistemi, bilgisayarınızın performansını ve
+            dayanıklılığını artırır. İşte öne çıkan özellikler:
+          </p>
+          <br /><br />
+
+          <h3>1️⃣ Hava Soğutma</h3>
+          <p>
+            Fanlar ve ısı emici bloklardan oluşan hava soğutma sistemleri,
+            bileşenlerden gelen ısıyı havaya aktarır. Genellikle ekonomik ve
+            kurulumu kolaydır.
+          </p>
+          <br /><br />
+
+          <h3>2️⃣ Sıvı Soğutma</h3>
+          <p>
+            Sıvı soğutma sistemleri, ısıyı daha verimli bir şekilde
+            uzaklaştırmak için su veya özel soğutma sıvıları kullanır. Yüksek
+            performanslı sistemlerde tercih edilir.
+          </p>
+          <br /><br />
+
+          <h3>3️⃣ Pasif Soğutma</h3>
+          <p>
+            Hareketli parça içermeyen pasif soğutma, sessiz çalışma avantajı
+            sunar ancak genellikle düşük ısı dağıtım performansına sahiptir.
+          </p>
+          <br /><br />
+
+          <center>
+            <div class="modelsite">
+              <iframe
+                src="https://hmbrgr.github.io/Models/sogutma.html"
+              ></iframe>
+            </div>
+          </center>
+          <br /><br />
+
+          <h2>Soğutma Seçerken Dikkat Edilmesi Gerekenler</h2>
+          <h3>Seçiminizi yaparken göz önünde bulundurmanız gerekenler:</h3>
+          ✔ <strong>Uyumluluk:</strong> Anakart ve kasa ile uyumlu ölçü ve
+          bağlantılara sahip mi?<br />
+          ✔ <strong>Performans:</strong> İhtiyaç duyulan ısı dağıtımını
+          sağlayabiliyor mu?<br />
+          ✔ <strong>Gürültü Seviyesi:</strong> Fan ve pompa sesleri istenmeyen
+          gürültüyü yaratmıyor mu?<br />
+          ✔ <strong>Kurulum Kolaylığı:</strong> Montajı ve bakım işlemleri
+          kullanıcı dostu mu?<br />
+          <br /><br />
+
+          <h2>Soğutma Çeşitleri</h2>
+          <h3>🎮 1. Fanlı Soğutma Sistemleri</h3>
+          <p>
+            En yaygın kullanılan soğutma yöntemi olup, yüksek hava akışı
+            sayesinde bileşenlerden ısıyı uzaklaştırır.
+          </p>
+          <h3>💻 2. Sıvı Soğutma Sistemleri</h3>
+          <p>
+            Özellikle overclock yapan ve yüksek performans bekleyen sistemlerde
+            tercih edilen sıvı soğutma, daha düşük sıcaklıklar sağlar.
+          </p>
+          <h3>🖥 3. Hibrit Sistemler</h3>
+          <p>
+            Hem hava hem de sıvı soğutmanın avantajlarını birleştiren hibrit
+            sistemler, optimum performans ve sessiz çalışma sunar.
+          </p>
+          <a href="kasa.html">
+            <button class="glow-on-hover" style="font-size: 17px" type="button">
+              Kasa Sayfası İçin Tıklayın
+            </button>
+          </a>
+        </div>
+      </center>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Vertex Bilgisayar Parçaları. Tüm hakları saklıdır.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

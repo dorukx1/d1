@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anakart Tanıtımı - Vertex Bilgisayar Parçaları</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="../logo.png" type="image/x-icon" />
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer@latest"
+    ></script>
+  </head>
+  <body>
+    <canvas id="bgCanvas" class="bg-canvas"></canvas>
+
+    <button id="scrollToTop" title="Yukarı Çık">&#8679;</button>
+    <div id="transition-overlay"></div>
+
+    <header>
+      <nav class="site-nav">
+        <a
+          href="../index.html"
+          class="logo"
+          style="text-decoration: none; color: white"
+        >
+          <img src="../logo.png" alt="Vertex logo" />
+        </a>
+        <input type="checkbox" id="nav-toggle" />
+        <label for="nav-toggle" class="hamburger">&#9776;</label>
+
+        <ul class="menu">
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="hakkimizda.html">Hakkımızda</a></li>
+          <li><a href="iletisim.html">İletişim</a></li>
+
+          <li class="dropdown">
+            <a href="#">Parçalar ▾</a>
+            <ul class="submenu">
+              <li><a href="anakart.html">Anakart</a></li>
+              <li><a href="islemci.html">İşlemci</a></li>
+              <li><a href="ekranKarti.html">Ekran Kartı</a></li>
+              <li><a href="ram.html">RAM</a></li>
+              <li><a href="depolama.html">Depolama</a></li>
+              <li><a href="gucKaynagi.html">Güç Kaynağı</a></li>
+              <li><a href="sogutma.html">Soğutma</a></li>
+              <li><a href="kasa.html">Kasa</a></li>
+              <li><a href="monitor.html">Monitör</a></li>
+              <li><a href="aksesuar.html">Aksesuarlar</a></li>
+            </ul>
+          </li>
+
+          <li><a href="yy.html" class="search-btn">Arama</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <center>
+        <div class="content">
+          <h1>Anakart</h1>
+          <p>
+            Anakart, bilgisayarın tüm donanım bileşenlerinin birleştiği ve
+            birbiriyle iletişim kurmasını sağlayan temel devre kartıdır. İşlemci
+            (CPU), bellek (RAM), ekran kartı (GPU), depolama birimleri
+            (SSD/HDD), güç kaynağı ve diğer çevresel bileşenlerin anakarta
+            bağlanarak birlikte çalışmasını mümkün kılan bir yapıdır. Anakartın
+            kalitesi, veri iletim hızları, genişletilebilirlik ve performans
+            açısından bilgisayarın genel işleyişini büyük ölçüde etkiler. İyi
+            bir anakart seçimi, sistemin uzun ömürlü, kararlı ve yüksek
+            performanslı çalışmasını sağlar.
+          </p>
+          <img class="zoom" src="images/anakart1.png" alt="Anakart Görseli" />
+
+          <h2>Anakartın Temel Bileşenleri</h2>
+          <p>
+            Bir anakartın bileşenleri, sistemin nasıl çalışacağını belirleyen
+            kritik unsurlardır. İşte bir anakart üzerinde yer alan en önemli
+            parçalar:
+          </p>
+          <br /><br />
+          <h3>1️⃣ Yonga Seti (Chipset)</h3>
+          <p>
+            Yonga seti, anakartın beynidir ve sistemin ne kadar hızlı
+            çalışabileceğini, hangi donanımları destekleyebileceğini belirler.
+            Kuzey Köprüsü (Northbridge): İşlemci, RAM ve ekran kartı gibi yüksek
+            hızlı bileşenleri yönetir. Güney Köprüsü (Southbridge): Depolama,
+            USB portları, ses kartı gibi daha yavaş bileşenleri kontrol eder.
+            Modern anakartlarda bu iki köprü genellikle tek bir çipset içinde
+            birleşmiştir.
+          </p>
+          <br /><br />
+          <h3>2️⃣ İşlemci Soketi (CPU Soketi)</h3>
+          <p>
+            İşlemcinin (CPU) takıldığı bölümdür. Anakartın desteklediği işlemci
+            tipi, üzerindeki soket türüne bağlıdır. Örneğin: Intel işlemciler
+            için yaygın soket türleri: LGA 1200, LGA 1700, LGA 2066 AMD
+            işlemciler için yaygın soket türleri: AM4, AM5, sTRX4 (Threadripper)
+            Eğer bir anakartın işlemci soketi kullandığın işlemciyle uyumlu
+            değilse, işlemciyi çalıştıramazsın.
+          </p>
+          <br /><br />
+          <h3>3️⃣ RAM Yuvaları (DIMM Slotları)</h3>
+          <p>
+            Bilgisayarın geçici belleği olan RAM modüllerinin takıldığı
+            bölümdür. DDR4 ve DDR5 bellek türleri şu anda en yaygın
+            kullanılanlardır. RAM yuvalarının sayısı 2, 4 veya 8 olabilir. Çift
+            kanal (Dual Channel) veya dört kanal (Quad Channel) desteği, bellek
+            hızını artırabilir. Bir anakartın maksimum desteklediği RAM
+            kapasitesi, sistemin performansı açısından önemlidir.
+          </p>
+          <br /><br />
+          <h3>4️⃣ PCIe Yuvaları (Genişleme Slotları)</h3>
+          <p>
+            Ekran kartı (GPU), ses kartı, Wi-Fi kartı, NVMe SSD’ler ve diğer
+            genişleme kartlarının bağlandığı yuvalardır. PCIe 3.0, 4.0 ve 5.0
+            gibi farklı hız standartları vardır. PCIe 16x, ekran kartları için
+            en hızlı slot türüdür. Özellikle oyun bilgisayarları ve profesyonel
+            iş istasyonları, çok sayıda PCIe yuvasına sahip anakartları tercih
+            eder.
+          </p>
+          <br /><br />
+          <h3>5️⃣ Depolama Bağlantıları (SATA ve M.2)</h3>
+          <p>
+            SATA bağlantıları HDD ve 2.5” SSD'leri destekler (SATA 3: 6Gbps).
+            M.2 yuvaları, NVMe SSD'leri destekleyerek çok daha yüksek hızda veri
+            transferi sağlar (PCIe 4.0 veya 5.0). Yeni nesil anakartlarda M.2
+            NVMe SSD yuvaları daha fazla yer kaplarken, eski nesil SATA portları
+            giderek azalmaktadır.
+          </p>
+          <br /><br />
+          <h3>6️⃣ Arka Giriş/Çıkış (I/O) Bağlantı Noktaları</h3>
+          <p>
+            Anakartın arka tarafında yer alan portlar, bilgisayarın çevre
+            birimleriyle bağlantısını sağlar.
+          </p>
+          <br /><br />
+          <center>
+            <div class="modelsite">
+              <iframe
+                src="https://hmbrgr.github.io/Models/anakart.html"
+              ></iframe>
+            </div>
+          </center>
+          <br /><br />
+          <h3>
+            USB Portları (USB 3.2, USB-C, Thunderbolt gibi hızlı veri aktarım
+            portları)
+          </h3>
+          <ul style="text-align: left">
+            <li>Ethernet Portu (Ağ bağlantısı için)</li>
+            <li>Ses Çıkışları (Kulaklık, mikrofon, hoparlör bağlantıları)</li>
+            <li>HDMI, DisplayPort, VGA, DVI (Harici görüntü çıkışları)</li>
+            <li>
+              Modern anakartlarda USB-C ve yüksek hızda veri aktarımı sağlayan
+              Thunderbolt 4 portları yaygınlaşmaktadır.
+            </li>
+          </ul>
+
+          <br /><br /><br />
+          <h2>Anakart Seçerken Dikkat Edilmesi Gerekenler</h2>
+          <h3>Bir anakart seçerken şu kriterlere dikkat etmelisin:</h3>
+          ✔ İşlemci Uyumluluğu: Kullanmak istediğin işlemciyle uyumlu mu?<br />
+          ✔ RAM Desteği: Maksimum RAM kapasitesi ve hızı yeterli mi?<br />
+          ✔ Genişleme Yuvaları: Ekran kartı, SSD ve diğer bileşenler için
+          yeterli PCIe yuvası var mı?<br />
+          ✔ Bağlantı Seçenekleri: USB-C, Wi-Fi, Bluetooth ve diğer bağlantı
+          noktaları ihtiyacını karşılıyr mu?<br />
+          ✔ Overclock Desteği: Yüksek performans için hız aşırtma (OC) yapmak
+          istiyorsan, VRM kalitesi iyi mi?<br />
+          ✔ Geleceğe Dönük Olması: Yeni nesil teknolojileri destekliyor mu?
+          (PCIe 5.0, DDR5, Wi-Fi 6E vb.) <br />
+
+          <br /><br />
+          <h2>Anakart Çeşitleri</h2>
+          <h3>🖥 1. ATX Anakartlar (Standart Boyut)</h3>
+          <p>
+            Boyut: 30.5 cm x 24.4 cm Özellik: En fazla genişleme yuvasına ve
+            bağlantı noktasına sahip. Kullanım Alanı: Oyun bilgisayarları, iş
+            istasyonları, profesyonel sistemler.
+          </p>
+          <h3>💻 2. Micro-ATX Anakartlar (Orta Boyut)</h3>
+          <p>
+            Boyut: 24.4 cm x 24.4 cm Özellik: Daha az genişleme yuvasına sahip,
+            ama ATX’e göre daha küçük. Kullanım Alanı: Günlük kullanım
+            bilgisayarları, orta seviye oyuncu sistemleri.
+          </p>
+          <h3>🎮 3. Mini-ITX Anakartlar (Kompakt)</h3>
+          <p>
+            Boyut: 17 cm x 17 cm Özellik: Küçük kasalar için idealdir ama
+            genişleme seçenekleri sınırlıdır. Kullanım Alanı: Küçük ama güçlü
+            sistemler, mini PC’ler.
+          </p>
+
+          <a href="islemci.html"
+            ><button
+              class="glow-on-hover"
+              style="font-size: 17px"
+              type="button"
+            >
+              İşlemci Sayfası İçin Tıklayın
+            </button></a
+          >
+        </div>
+      </center>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Vertex Bilgisayar Parçaları. Tüm hakları saklıdır.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

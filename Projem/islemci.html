@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anakart Tanıtımı - Vertex Bilgisayar Parçaları</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="../logo.png" type="image/x-icon" />
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer@latest"
+    ></script>
+  </head>
+  <body>
+    <canvas id="bgCanvas" class="bg-canvas"></canvas>
+
+    <button id="scrollToTop" title="Yukarı Çık">&#8679;</button>
+    <div id="transition-overlay"></div>
+
+    <header>
+      <nav class="site-nav">
+        <a
+          href="../index.html"
+          class="logo"
+          style="text-decoration: none; color: white"
+        >
+          <img src="../logo.png" alt="Vertex logo" />
+        </a>
+        <input type="checkbox" id="nav-toggle" />
+        <label for="nav-toggle" class="hamburger">&#9776;</label>
+
+        <ul class="menu">
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="hakkimizda.html">Hakkımızda</a></li>
+          <li><a href="iletisim.html">İletişim</a></li>
+
+          <li class="dropdown">
+            <a href="#">Parçalar ▾</a>
+            <ul class="submenu">
+              <li><a href="anakart.html">Anakart</a></li>
+              <li><a href="islemci.html">İşlemci</a></li>
+              <li><a href="ekranKarti.html">Ekran Kartı</a></li>
+              <li><a href="ram.html">RAM</a></li>
+              <li><a href="depolama.html">Depolama</a></li>
+              <li><a href="gucKaynagi.html">Güç Kaynağı</a></li>
+              <li><a href="sogutma.html">Soğutma</a></li>
+              <li><a href="kasa.html">Kasa</a></li>
+              <li><a href="monitor.html">Monitör</a></li>
+              <li><a href="aksesuar.html">Aksesuarlar</a></li>
+            </ul>
+          </li>
+
+          <li><a href="yy.html" class="search-btn">Arama</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <center>
+        <div class="content">
+          <h1>İşlemci</h1>
+          <p>
+            Bilgisayar dünyasında en kritik bileşenlerden biri olan işlemci (CPU
+            - Central Processing Unit), tüm sistemin beyni olarak çalışır.
+            İşlemci, bilgisayarın tüm veri işleme, hesaplama ve komut yürütme
+            görevlerini üstlenir. Bir insan vücudunu düşünürsek, işlemci beyin
+            gibi çalışır ve tüm bileşenleri kontrol ederek onların birbiriyle
+            uyumlu çalışmasını sağlar. Modern işlemciler, hız, çoklu çekirdek
+            desteği, enerji verimliliği ve yapay zeka optimizasyonları gibi
+            birçok özelliğe sahiptir. Günümüzde Intel ve AMD en büyük iki
+            işlemci üreticisidir ve bu markalar sürekli olarak işlemci
+            performanslarını artırmak için yenilikçi teknolojiler
+            geliştirmektedir.
+          </p>
+          <img class="zoom" src="images/islemci.png" alt="Anakart Görseli" />
+
+          <h2>İŞLEMCİ NASIL ÇALIŞIR?</h2>
+          <p style="text-align: left">
+            Bir işlemci, bilgisayarın çalışmasını sağlayan sayısız matematiksel
+            işlem ve mantıksal komutu saniyeler içinde gerçekleştirir.
+            İşlemcinin temel çalışma prensibi şu şekildedir: <br /><br />
+
+            1️⃣ Komut Alma (Fetch): İşlemci, RAM'den bir komut alır. <br />
+            2️⃣ Komutu Çözme (Decode): Alınan komut, işlemcinin anlayacağ şekilde
+            yorumlanır. <br />
+            3️⃣ Çalıştırma (Execute): Komut çalıştırılır ve gerekli hesaplamalar
+            yapılır. <br />
+            4️⃣ Sonuç Depolama (Writeback): İşlem tamamlandıktan sonra sonuç
+            RAM’e veya ilgili bileşene iletilir. <br />
+
+            Bu döngü milyarlarca kez tekrar eder ve bilgisayarın sorunsuz
+            çalışmasını sağlar. İşlemcinin hızı, bu döngüyü ne kadar hızlı
+            tamamlayabildiğine bağlıdır.
+          </p>
+
+          <h2>İŞLEMCİNİN TEMEL BİLEŞENLERİ</h2>
+          <br /><br />
+          <h3>1️⃣ Çekirdek Sayısı (Cores)</h3>
+          <p>
+            Günümüz işlemcileri artık çok çekirdekli (multi-core) olarak
+            üretilmektedir. Çekirdekler, aynı anda birden fazla işlemi yürütmeye
+            yardımcı olur.
+
+            <li>
+              Tek Çekirdek (Single Core): Eskiden tüm işlemler tek bir çekirdek
+              üzerinden yürütülüyordu, ancak günümüzde verimsiz kaldı.
+            </li>
+            <li>
+              Çift Çekirdek (Dual Core): Aynı anda iki işlem yapabilen
+              işlemciler.
+            </li>
+            <li>
+              Dört Çekirdek (Quad Core): Standart hale gelmiş, oyun ve günlük
+              kullanım için yeterli olan işlemciler.
+            </li>
+            <li>
+              Altı ve Sekiz Çekirdek (Hexa & Octa Core): Daha yoğun iş yükleri
+              ve çoklu görevler için tercih edilir.
+            </li>
+            <li>
+              On, On İki ve Daha Fazla Çekirdek: Profesyonel iş istasyonları,
+              video düzenleme, yapay zeka ve yüksek performans gerektiren
+              uygulamalar için idealdir.
+            </li>
+          </p>
+          <br /><br />
+          <h3>2️⃣ Saat Hızı (Clock Speed - GHz)</h3>
+          <p>
+            Saat hızı, işlemcinin bir saniyede kaç işlem yapabildiğini gösterir
+            ve GHz (Gigahertz) cinsinden ölçülür.
+            <li>
+              2.5 GHz – 3.5 GHz: Günlük kullanım ve ofis işleri için yeterlidir.
+            </li>
+            <li>
+              3.5 GHz – 4.5 GHz: Oyun, tasarım ve daha yoğun işlemler için
+              uygundur.
+            </li>
+            <li>
+              4.5 GHz ve üzeri: Profesyonel işler ve hız aşırtma (overclock)
+              için tercih edilir.
+            </li>
+
+            Daha yüksek GHz genellikle daha hızlı işlem gücü anlamına gelir,
+            ancak verimlilik için çekirdek sayısıyla birlikte
+            değerlendirilmelidir.
+          </p>
+          <br /><br />
+          <h3>3️⃣ Önbellek (Cache)</h3>
+          <p>
+            Önbellek, işlemcinin sık kullanılan verilere hızla erişmesini
+            sağlayan geçici bellek alanıdır. Üç farklı önbellek türü vardır:
+            <li>
+              L1 Cache: En hızlı ve en küçük önbellek (işlemci çekirdeğine en
+              yakın bellek).
+            </li>
+            <li>L2 Cache: Daha büyük ama biraz daha yavaş.</li>
+            <li>L3 Cache: En büyük önbellek, ancak en yavaş olanı.</li>
+
+            Yüksek önbelleğe sahip işlemciler, daha az RAM erişimi gerektirdiği
+            için daha hızlı çalışır.
+          </p>
+          <br /><br />
+          <h3>4️⃣ İş Parçacıkları (Threads) ve Hyper-Threading</h3>
+          <p>
+            İşlemciler, her çekirdeği sanal olarak ikiye bölebilir ve aynı anda
+            iki işlemi çalıştırabilir.
+
+            <li>
+              Intel’de bu teknoloji “Hyper-Threading” (HT) olarak adlandırılır.
+            </li>
+            <li>
+              AMD’de ise “Simultaneous Multithreading” (SMT) olarak bilinir.
+            </li>
+            Bu teknoloji, çoklu görev (multitasking) performansını artırarak
+            oyunlarda ve uygulamalarda daha akıcı bir deneyim sunar.
+          </p>
+          <br /><br />
+
+          <center>
+            <div class="modelsite">
+              <iframe
+                src="https://hmbrgr.github.io/Models/islemci.html"
+              ></iframe>
+            </div>
+          </center>
+
+          <br /><br />
+          <h2>İŞLEMCİ SEÇERKEN DİKKAT EDİLMESİ GEREKENLER</h2>
+          <h3>Bir işlemci seçerken şu faktörlere dikkat etmelisin:</h3>
+          <p>
+            ✔ Kullanım Amacın: <br />
+
+            <li>
+              Oyun için mi? (Daha yüksek saat hızları ve çok çekirdek önerilir.)
+            </li>
+            <li>
+              Profesyonel işler için mi? (Video düzenleme, 3D modelleme ve veri
+              işleme için yüksek çekirdek sayısı önemlidir.)
+            </li>
+            <br /><br />
+            ✔ Uyumluluk: <br />
+            <li>Anakartın işlemcini destekliyor mu?</li>
+            <li>Intel mi, AMD mi tercih edeceksin?</li>
+            <li>DDR4 veya DDR5 RAM desteği uyumlu mu?</li>
+            <br /><br />
+            ✔ Soğutma ve Güç Tüketimi: <br />
+            <li>
+              Daha güçlü işlemciler daha fazla ısınır ve iyi bir soğutma
+              gerektirir.
+            </li>
+            <li>
+              Güç tüketimi açısından verimli bir işlemci mi? (Örn. AMD Ryzen 7
+              veya Intel Core i7 gibi)
+            </li>
+            <br /><br />
+            ✔ Fiyat-Performans Dengesi:
+            <li>
+              En yeni işlemci her zaman en iyi değil! Bütçene ve ihtiyacına göre
+              en uygun modeli seçmelisin.
+            </li>
+          </p>
+          <br /><br />
+          <h2>İŞLEMCİ MARKALARI VE MODELLERİ</h2>
+          <h3>🟦 Intel İşlemciler:</h3>
+          <li>Intel Core i3, i5, i7, i9 (Günlük kullanım ve oyuncular için)</li>
+          <li>Intel Xeon (Profesyonel iş istasyonları ve sunucular için)</li>
+          <h3>🟥 AMD İşlemciler:</h3>
+          <li>AMD Ryzen 3, 5, 7, 9 (Performans odaklı tüketici işlemcileri)</li>
+          <li>AMD Threadripper (Ağır iş yükleri ve profesyoneller için)</li>
+          <li>AMD EPYC (Sunucular ve veri merkezleri için)</li>
+          <br /><br /><br />
+          <a href="ekranKarti.html"
+            ><button
+              class="glow-on-hover"
+              style="font-size: 17px"
+              type="button"
+            >
+              Ekran Kartı Sayfası İçin Tıklayın
+            </button></a
+          >
+        </div>
+      </center>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Vertex Bilgisayar Parçaları. Tüm hakları saklıdır.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

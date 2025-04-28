@@ -391,6 +391,7 @@ main {
   display: none;
   align-items: center;
   justify-content: center;
+  z-index: 99999;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 

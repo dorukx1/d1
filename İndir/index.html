@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Balonlu İndir Butonları</title>
+  <style>
+    /* Genel reset */
+    * { margin:0; padding:0; box-sizing:border-box;}
+    html, body { height:100%; }
+
+    /* Arka plan balonları */
+    .balloons {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+      background: linear-gradient(to top, #1a1a1a, #333);
+    }
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 40px; height: 60px;
+      background: var(--color);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      opacity: 0.8;
+      left: var(--x);
+      transform: scale(var(--s));
+      animation: float var(--t) linear infinite var(--delay);
+    }
+    .balloon::after {
+      content: '';
+      position: absolute;
+      top: 60px; left: 50%;
+      width: 2px; height: 50px;
+      background: #aaa;
+    }
+    @keyframes float {
+      0%   { transform: translateY(0) scale(var(--s)); }
+      50%  { transform: translateY(-50vh) scale(var(--s)); }
+      100% { transform: translateY(-110vh) scale(var(--s)); }
+    }
+
+    /* Sayfa ve yazı ayarları */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      text-align: center;
+      padding: 2em;
+    }
+    h1 { margin-bottom: .5em; }
+    p { opacity: .75; }
+
+    /* Buton stili (öncekine benzeyen) */
+    .btn {
+      position: relative;
+      display: inline-block;
+      padding: .75em 2em;
+      margin: 1em;
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      overflow: hidden;
+      transition: color .3s;
+      border-radius: .5em;
+    }
+    .btn span { position: relative; z-index: 1; }
+    .btn::before {
+      content: '';
+      position: absolute; top:0; left:0;
+      width:100%; height:100%;
+      background-size:200% 200%;
+      z-index:0;
+      transition: filter .3s;
+    }
+    .btn.primary::before {
+      background: linear-gradient(45deg, #ff6ec4,#7873f5,#4ade80);
+      animation: slide1 4s ease infinite;
+    }
+    .btn.secondary::before {
+      background: linear-gradient(45deg, #43e97b,#38f9d7,#fa709a);
+      animation: slide2 4s ease infinite;
+    }
+    @keyframes slide1 {
+      0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}
+    }
+    @keyframes slide2 {
+      0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}
+    }
+    .btn:hover { color: #1a1a1a; }
+    .btn:hover::before { filter: brightness(1.2); }
+  </style>
+</head>
+<body>
+
+  <!-- Uçan balonlar -->
+  <div class="balloons">
+    <div class="balloon" style="--x:10%; --s:1;   --t:12s; --delay:0s;  --color:#ff6ec4;"></div>
+    <div class="balloon" style="--x:30%; --s:0.8; --t:14s; --delay:2s;  --color:#38f9d7;"></div>
+    <div class="balloon" style="--x:50%; --s:1.2; --t:10s; --delay:1s;  --color:#fa709a;"></div>
+    <div class="balloon" style="--x:70%; --s:0.9; --t:13s; --delay:3s;  --color:#4ade80;"></div>
+    <div class="balloon" style="--x:85%; --s:1.1; --t:11s; --delay:0.5s;--color:#7873f5;"></div>
+  </div>
+
+  <div class="container">
+    <h1>📦 Dosyaları İndir</h1>
+    <p>Bir butona tıkla, ZIP dosyan indikçe 🎉</p>
+
+    <a class="btn primary" href="İsveç.zip" download>
+      <span>İsveç’i İndir</span>
+    </a>
+    <a class="btn secondary" href="Projem.zip" download>
+      <span>Projemi İndir</span>
+    </a>
+  </div>
+</body>
+</html>

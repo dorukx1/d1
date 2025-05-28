@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balıklar ve Ben</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #1a4569, #2c7bb6);
+        color: #fff;
+      }
+
+      nav {
+        background: rgba(0, 0, 0, 0.8);
+        padding: 1rem;
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+      }
+
+      nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin: 0 1.5rem;
+      }
+
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: #64c4ed;
+      }
+
+      section {
+        min-height: 100vh;
+        padding: 6rem 2rem 2rem;
+        display: none;
+      }
+
+      section.active {
+        display: block;
+        animation: fadeIn 1s;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        color: #fff;
+      }
+
+      .fish-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        backdrop-filter: blur(5px);
+        transition: transform 0.3s;
+      }
+
+      .fish-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .impact-counter {
+        text-align: center;
+        font-size: 2rem;
+        margin: 2rem 0;
+      }
+
+      .interactive-element {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        margin: 1rem 0;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#" onclick="showSection('anasayfa')">Ana Sayfa</a></li>
+        <li><a href="#" onclick="showSection('baliklar')">Balık Türleri</a></li>
+        <li><a href="#" onclick="showSection('cevre')">Çevresel Etki</a></li>
+        <li><a href="#" onclick="showSection('koruma')">Koruma</a></li>
+      </ul>
+    </nav>
+
+    <section id="anasayfa" class="active">
+      <div class="container">
+        <h1>Balıklar ve Ben</h1>
+        <div class="fish-card">
+          <h2>Hoş Geldiniz</h2>
+          <p>
+            Denizlerimizin muhteşem canlıları hakkında bilgi edinmek için doğru
+            yerdesiniz.
+          </p>
+        </div>
+        <div class="interactive-element" id="welcomeMessage">
+          Keşfetmeye Başla!
+        </div>
+      </div>
+    </section>
+
+    <section id="baliklar">
+      <div class="container">
+        <h1>Balık Türleri</h1>
+        <div class="fish-card">
+          <h2>Hamsi</h2>
+          <p>
+            Karadeniz'in simgesi olan hamsi, küçük boyutlu ama besin değeri
+            yüksek bir balıktır.
+          </p>
+        </div>
+        <div class="fish-card">
+          <h2>Palamut</h2>
+          <p>
+            Göç eden balık türlerinden olan palamut, sonbahar aylarının önemli
+            balıklarındandır.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="cevre">
+      <div class="container">
+        <h1>Çevresel Etki</h1>
+        <div class="impact-counter">
+          <span id="plasticCounter">0</span> ton
+          <p>Okyanuslardaki plastik atık miktarı</p>
+        </div>
+        <div class="fish-card">
+          <h2>Plastik Kirliliği</h2>
+          <p>
+            Her yıl milyonlarca ton plastik atık okyanuslarımıza karışmaktadır.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="koruma">
+      <div class="container">
+        <h1>Koruma Çalışmaları</h1>
+        <div class="fish-card">
+          <h2>Nasıl Yardım Edebilirim?</h2>
+          <p>Deniz ekosistemini korumak için yapabileceğiniz basit adımlar:</p>
+          <ul id="protectionTips"></ul>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function showSection(sectionId) {
+        document.querySelectorAll("section").forEach((section) => {
+          section.classList.remove("active");
+        });
+        document.getElementById(sectionId).classList.add("active");
+      }
+
+      // Plastik sayacı animasyonu
+      let counter = 0;
+      const target = 8000000;
+      const speed = 100;
+      const increment = target / speed;
+
+      function updateCounter() {
+        if (counter < target) {
+          counter += increment;
+          document.getElementById("plasticCounter").textContent =
+            Math.round(counter).toLocaleString();
+          setTimeout(updateCounter, 50);
+        }
+      }
+
+      // Koruma önerileri
+      const tips = [
+        "Tek kullanımlık plastiklerden kaçının",
+        "Geri dönüşüm yapın",
+        "Sürdürülebilir balıkçılığı destekleyin",
+        "Sahil temizleme etkinliklerine katılın",
+      ];
+
+      window.onload = function () {
+        // Hoş geldiniz mesajı efekti
+        document
+          .getElementById("welcomeMessage")
+          .addEventListener("click", function () {
+            this.style.backgroundColor = "rgba(255, 255, 255, 0.4)";
+            setTimeout(() => {
+              this.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
+            }, 200);
+          });
+
+        // Koruma önerilerini listeye ekleme
+        const tipsList = document.getElementById("protectionTips");
+        tips.forEach((tip) => {
+          const li = document.createElement("li");
+          li.textContent = tip;
+          tipsList.appendChild(li);
+        });
+
+        // Çevre bölümü görüntülendiğinde sayacı başlat
+        document
+          .querySelector("a[onclick=\"showSection('cevre')\"]")
+          .addEventListener("click", updateCounter);
+      };
+    </script>
+  </body>
+</html>

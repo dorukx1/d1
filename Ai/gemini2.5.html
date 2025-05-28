@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balıklar ve Ben: Suyun Altındaki Dünya ve Biz</title>
+    <style>
+      /* --- Genel Stil Ayarları --- */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #e0f2f7; /* Açık mavi tonu */
+        color: #333;
+        overflow-x: hidden; /* Yatay kaydırmayı engelle */
+        scroll-behavior: smooth; /* Yumuşak kaydırma */
+      }
+
+      header {
+        background-color: #007bff; /* Mavi */
+        color: white;
+        padding: 1rem 0;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        background-color: #0056b3; /* Koyu mavi */
+      }
+
+      nav ul li a {
+        display: block;
+        color: white;
+        padding: 1rem 1.5rem;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      nav ul li a:hover {
+        background-color: #003d80; /* Daha koyu mavi */
+        transform: translateY(-2px);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      section {
+        padding: 3rem 0;
+        border-bottom: 1px solid #eee;
+        opacity: 0; /* JavaScript ile görünür olacak */
+        transform: translateY(20px); /* JavaScript ile yukarı hareket edecek */
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      section.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      section:last-child {
+        border-bottom: none;
+      }
+
+      h2 {
+        color: #007bff;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .card {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .card img {
+        max-width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+      }
+
+      .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 1.1rem;
+        transition: 0.4s;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+
+      .active-accordion,
+      .accordion:hover {
+        background-color: #ddd;
+      }
+
+      .panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        margin-bottom: 10px;
+      }
+
+      .modal {
+        display: none; /* Varsayılan olarak gizli */
+        position: fixed; /* Sabit konum */
+        z-index: 1001; /* Diğer her şeyin üstünde */
+        left: 0;
+        top: 0;
+        width: 100%; /* Tam genişlik */
+        height: 100%; /* Tam yükseklik */
+        overflow: auto; /* Kaydırma çubuğu */
+        background-color: rgba(0, 0, 0, 0.6); /* Yarı şeffaf siyah arka plan */
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 700px;
+        border-radius: 10px;
+        position: relative;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+      }
+
+      @keyframes animatetop {
+        from {
+          top: -300px;
+          opacity: 0;
+        }
+        to {
+          top: 0;
+          opacity: 1;
+        }
+      }
+
+      .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+      }
+
+      .close-button:hover,
+      .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      footer {
+        background-color: #0056b3;
+        color: white;
+        text-align: center;
+        padding: 1.5rem 0;
+        margin-top: 2rem;
+      }
+
+      /* --- Duyarlı Tasarım --- */
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 1.8rem;
+        }
+
+        nav ul {
+          flex-direction: column;
+        }
+
+        nav ul li a {
+          padding: 0.8rem 1rem;
+        }
+
+        .container {
+          margin: 1rem auto;
+          padding: 0 1rem;
+        }
+
+        section {
+          padding: 2rem 0;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+        }
+
+        .grid-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Balıklar ve Ben</h1>
+      <nav>
+        <ul>
+          <li><a href="#ana-sayfa" data-section="ana-sayfa">Ana Sayfa</a></li>
+          <li>
+            <a href="#balik-turleri" data-section="balik-turleri"
+              >Balık Türleri</a
+            >
+          </li>
+          <li>
+            <a href="#su-alti-ekosistemi" data-section="su-alti-ekosistemi"
+              >Su Altı Ekosistemi</a
+            >
+          </li>
+          <li>
+            <a href="#insan-etkileri" data-section="insan-etkileri"
+              >İnsan Etkileri</a
+            >
+          </li>
+          <li>
+            <a
+              href="#nasil-yardim-edebiliriz"
+              data-section="nasil-yardim-edebiliriz"
+              >Nasıl Yardım Edebiliriz?</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section id="ana-sayfa" class="active">
+        <h2>Suyun Derinliklerine Bir Yolculuk</h2>
+        <p>
+          <strong>Balıklar ve Ben</strong> sitesine hoş geldiniz! Bu site, su
+          altı dünyasının büyüleyici sakinleri olan balıkları daha yakından
+          tanımanız, onların yaşam alanlarını ve karşılaştıkları zorlukları
+          anlamanız için tasarlandı. Aynı zamanda, insan faaliyetlerinin bu
+          hassas ekosistemler üzerindeki etkilerine dikkat çekmeyi ve hep
+          birlikte daha sürdürülebilir bir gelecek için neler yapabileceğimizi
+          keşfetmeyi hedefliyoruz.
+        </p>
+        <p>
+          Balıklar, gezegenimizin ekolojik dengesi için hayati öneme sahiptir.
+          Okyanuslardan tatlı su kaynaklarına kadar her yerde bulunurlar ve
+          besin zincirinin önemli bir parçasıdırlar. Ancak, aşırı avlanma,
+          kirlilik, iklim değişikliği ve habitat tahribatı gibi faktörler,
+          onların ve dolayısıyla tüm sucul ekosistemlerin geleceğini tehdit
+          etmektedir.
+        </p>
+        <p>
+          Bu platformda, farklı balık türlerini, su altı ekosistemlerinin
+          karmaşıklığını, insanların doğaya verdiği zararları ve bu zararları
+          azaltmak için atabileceğimiz adımları keşfedeceksiniz. Hadi, suyun
+          altındaki bu gizemli ve güzel dünyaya birlikte dalalım!
+        </p>
+        <div class="grid-container">
+          <div class="card">
+            <img
+              src="https://source.unsplash.com/random/400x300/?fish-ocean"
+              alt="Okyanus Balığı"
+            />
+            <h3>Okyanusların Kalbi</h3>
+            <p>
+              Okyanuslar, sayısız balık türüne ev sahipliği yapar ve
+              gezegenimizin iklimini düzenlemede kritik bir rol oynar.
+            </p>
+          </div>
+          <div class="card">
+            <img
+              src="https://source.unsplash.com/random/400x300/?freshwater-fish"
+              alt="Tatlı Su Balığı"
+            />
+            <h3>Tatlı Su Mucizeleri</h3>
+            <p>
+              Nehirler, göller ve dereler de birçok benzersiz balık türüne ev
+              sahipliği yapar. Hassas dengeyi korumak önemlidir.
+            </p>
+          </div>
+          <div class="card">
+            <img
+              src="https://source.unsplash.com/random/400x300/?coral-reef"
+              alt="Mercan Resifi"
+            />
+            <h3>Mercan Resifleri</h3>
+            <p>
+              Sualtı şehirleri olan mercan resifleri, deniz yaşamının en zengin
+              ve en çeşitli ekosistemlerindendir.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="balik-turleri">
+        <h2>Balık Türleri: Çeşitlilik ve Özellikler</h2>
+        <p>
+          Dünya üzerinde bilinen 34.000'den fazla balık türü bulunmaktadır ve
+          her biri kendine özgü özelliklere, yaşam alanlarına ve davranışlara
+          sahiptir. Bu bölümde, balıkların genel sınıflandırmalarından
+          başlayarak bazı dikkat çekici türleri inceleyeceğiz.
+        </p>
+
+        <button class="accordion">Kemikli Balıklar (Osteichthyes)</button>
+        <div class="panel">
+          <p>
+            Balıkların büyük çoğunluğunu oluşturan bu grup, iskeletleri
+            kemiklerden oluşur. Yüzme keseleri bulunur ve pulları genellikle
+            ince, esnektir. Morina, ton balığı, somon gibi ticari açıdan önemli
+            birçok tür bu sınıfa girer.
+          </p>
+          <p><strong>Örnekler:</strong></p>
+          <ul>
+            <li>
+              **Somon:** Göçmen bir türdür, yaşam döngüsünün bir kısmını tatlı
+              suda, bir kısmını tuzlu suda geçirir. Omega-3 açısından zengindir.
+            </li>
+            <li>
+              **Kılıç Balığı:** Uzun, kılıç benzeri bir gagası olan büyük bir
+              avcı balıktır. Hızlı ve çeviktir.
+            </li>
+            <li>
+              **Palyaço Balığı:** Mercan resiflerinde anemonlarla simbiyotik
+              ilişki içinde yaşayan renkli ve popüler bir türdür.
+            </li>
+          </ul>
+        </div>
+
+        <button class="accordion">Kıkırdaklı Balıklar (Chondrichthyes)</button>
+        <div class="panel">
+          <p>
+            Bu balıkların iskeletleri kıkırdaktan yapılmıştır. Köpek balıkları,
+            vatozlar ve kimeralar bu gruba dahildir. Solungaç kapakları yoktur
+            ve genellikle daha az sayıda, büyük solungaç yarığına sahiptirler.
+          </p>
+          <p><strong>Örnekler:</strong></p>
+          <ul>
+            <li>
+              **Büyük Beyaz Köpek Balığı:** Okyanusların en büyük ve en güçlü
+              avcılarından biridir. Keskin duyuları ve hızlı yüzme yeteneğiyle
+              bilinir.
+            </li>
+            <li>
+              **Manta Vatozu:** Okyanuslardaki en büyük vatoz türüdür. Süzülerek
+              hareket eder ve planktonlarla beslenir.
+            </li>
+            <li>
+              **Çekiç Başlı Köpek Balığı:** Gözleri ve burun delikleri başının
+              her iki yanında genişlemiş bir yapıya sahiptir, bu da onlara daha
+              geniş bir görüş açısı ve koku algısı sağlar.
+            </li>
+          </ul>
+        </div>
+
+        <button class="accordion">Çenesiz Balıklar (Agnatha)</button>
+        <div class="panel">
+          <p>
+            En ilkel balık türlerinden biridir ve çeneleri yoktur. Denizyılan
+            balıkları (lamprey) ve miksinler (hagfish) bu gruba dahildir.
+            Genellikle yuvarlak, emici bir ağızları vardır.
+          </p>
+          <p><strong>Örnekler:</strong></p>
+          <ul>
+            <li>
+              **Denizyılan Balığı (Lamprey):** Parazitik bir türdür, diğer
+              balıklara yapışarak kanlarını emer.
+            </li>
+            <li>
+              **Miksin (Hagfish):** Leşçil bir türdür ve avcılardan korunmak
+              için bol miktarda mukus üretir.
+            </li>
+          </ul>
+        </div>
+        <p>
+          Her balık türü, su altı ekosisteminde benzersiz bir rol oynar ve bu
+          çeşitliliğin korunması hayati önem taşır.
+        </p>
+      </section>
+
+      <section id="su-alti-ekosistemi">
+        <h2>Su Altı Ekosistemi: Karmaşık Ağlar</h2>
+        <p>
+          Su altı ekosistemleri, balıklar, bitkiler, mikroorganizmalar ve diğer
+          deniz canlılarının birbirleriyle ve çevreleriyle etkileşimde bulunduğu
+          karmaşık ve dinamik sistemlerdir. Bu ekosistemler, oksijen üretimi,
+          karbon döngüsü ve besin zinciri gibi gezegenimiz için kritik öneme
+          sahip süreçleri yönetir.
+        </p>
+        <h3>Temel Bileşenler:</h3>
+        <ul>
+          <li>
+            <strong>Üreticiler:</strong> Fitoplanktonlar (mikroskobik algler) ve
+            su bitkileri gibi fotosentez yapan organizmalar. Besin zincirinin
+            temelini oluştururlar.
+          </li>
+          <li>
+            <strong>Tüketiciler:</strong> Otçul balıklar, yırtıcı balıklar,
+            kabuklular ve memeliler gibi farklı trofik seviyelerdeki canlılar.
+          </li>
+          <li>
+            <strong>Ayrıştırıcılar:</strong> Bakteriler ve mantarlar gibi ölü
+            organik maddeleri parçalayarak besin döngüsünü sağlayan
+            organizmalar.
+          </li>
+        </ul>
+        <h3>Ekosistem Çeşitliliği:</h3>
+        <p>
+          Su altı ekosistemleri, tuzluluk, sıcaklık, ışık ve derinlik gibi
+          faktörlere bağlı olarak büyük çeşitlilik gösterir:
+        </p>
+        <div class="grid-container">
+          <div class="card">
+            <h4>Mercan Resifleri</h4>
+            <img
+              src="https://source.unsplash.com/random/400x300/?coral-reef-fish"
+              alt="Mercan Resifi Balıkları"
+            />
+            <p>
+              Dünyadaki en biyolojik çeşitli ekosistemlerden bazılarıdır.
+              Balıklar, omurgasızlar ve diğer deniz canlıları için barınma ve
+              beslenme alanı sağlarlar.
+            </p>
+            <button class="open-modal-btn" data-modal-id="coral-modal">
+              Daha Fazla Bilgi
+            </button>
+          </div>
+          <div class="card">
+            <h4>Derin Deniz Hendekleri</h4>
+            <img
+              src="https://source.unsplash.com/random/400x300/?deep-sea-fish"
+              alt="Derin Deniz Balığı"
+            />
+            <p>
+              Işığın ulaşmadığı, aşırı basınçlı ve soğuk bölgelerdir. Burada
+              yaşayan canlılar, benzersiz adaptasyonlar geliştirmiştir.
+            </p>
+            <button class="open-modal-btn" data-modal-id="deep-sea-modal">
+              Daha Fazla Bilgi
+            </button>
+          </div>
+          <div class="card">
+            <h4>Mangrov Ormanları</h4>
+            <img
+              src="https://source.unsplash.com/random/400x300/?mangrove"
+              alt="Mangrov Ağaçları"
+            />
+            <p>
+              Tuzlu suya adapte olmuş ağaçlardan oluşan kıyı ekosistemleridir.
+              Birçok genç balık ve kabuklu türü için korunaklı bir yuva
+              sağlarlar.
+            </p>
+            <button class="open-modal-btn" data-modal-id="mangrove-modal">
+              Daha Fazla Bilgi
+            </button>
+          </div>
+        </div>
+        <p>
+          Bu ekosistemlerin sağlığı, küresel iklim ve biyoçeşitlilik için kritik
+          öneme sahiptir.
+        </p>
+      </section>
+
+      <section id="insan-etkileri">
+        <h2>İnsan Faaliyetlerinin Doğaya Zararları</h2>
+        <p>
+          Ne yazık ki, insan faaliyetleri su altı ekosistemleri ve genel olarak
+          doğa üzerinde yıkıcı etkilere sahiptir. Bu bölümde, başlıca tehditleri
+          ve bunların sonuçlarını inceleyeceğiz.
+        </p>
+        <h3>Başlıca Tehditler:</h3>
+        <div class="grid-container">
+          <div class="card">
+            <h4>Aşırı Avlanma</h4>
+            <img
+              src="https://source.unsplash.com/random/400x300/?overfishing"
+              alt="Aşırı Avlanma"
+            />
+            <p>
+              Balık stoklarının sürdürülebilir olmayan oranlarda avlanması,
+              belirli türlerin popülasyonlarını tehlikeli seviyelere düşürür ve
+              ekosistemin dengesini bozar.
+            </p>
+            <ul>
+              <li>Hayalet ağlar ve istenmeyen av (bycatch) sorunları.</li>
+              <li>Nesli tükenme tehlikesindeki türler.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>Deniz Kirliliği</h4>
+            <img
+              src="https://source.unsplash.com/random/400x300/?ocean-pollution"
+              alt="Deniz Kirliliği"
+            />
+            <p>
+              Plastik atıklar, kimyasal deşarjlar, petrol sızıntıları ve
+              mikropollutantlar deniz yaşamını zehirler, habitatları yok eder ve
+              besin zincirini bozar.
+            </p>
+            <ul>
+              <li>Mikroplastiklerin balıklar üzerindeki etkisi.</li>
+              <li>Sanayi ve tarım atıklarının etkisi.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4>İklim Değişikliği ve Okyanus Asitlenmesi</h4>
+            <img
+              src="https://source.unsplash.com/random/400x300/?climate-change-ocean"
+              alt="Okyanus Isınması"
+            />
+            <p>
+              Küresel ısınma, okyanus sıcaklıklarının artmasına ve deniz
+              seviyesinin yükselmesine neden olurken, atmosfere salınan CO2'nin
+              okyanuslar tarafından emilmesi asitlenmeye yol açar.
+            </p>
+            <ul>
+              <li>Mercan beyazlaması.</li>
+              <li>Deniz canlılarının göç yollarının değişmesi.</li>
+            </ul>
+          </div>
+        </div>
+        <h3>Sonuçlar:</h3>
+        <ul>
+          <li>Biyoçeşitlilik kaybı ve türlerin yok oluşu.</li>
+          <li>
+            Ekosistem hizmetlerinin (oksijen üretimi, besin döngüsü) bozulması.
+          </li>
+          <li>Gıda güvenliğinin tehdit edilmesi.</li>
+          <li>Kıyı topluluklarının ekonomik ve sosyal olarak etkilenmesi.</li>
+        </ul>
+        <p>Bu sorunlar, acil ve küresel eylem gerektiren ciddi tehditlerdir.</p>
+      </section>
+
+      <section id="nasil-yardim-edebiliriz">
+        <h2>Nasıl Yardım Edebiliriz?</h2>
+        <p>
+          Gezegenimizin su altı dünyasını korumak için hepimizin yapabileceği
+          şeyler var. Her ne kadar büyük sorunlar gibi görünse de, bireysel
+          eylemlerin birleşimi büyük farklar yaratabilir.
+        </p>
+        <h3>Bireysel Olarak Neler Yapabiliriz?</h3>
+        <div class="grid-container">
+          <div class="card">
+            <h4>Sorumlu Tüketim</h4>
+            <img
+              src="https://source.unsplash.com/random/400x300/?sustainable-seafood"
+              alt="Sürdürülebilir Balıkçılık"
+            />
+            <p>
+              Sürdürülebilir kaynaklardan elde edilen deniz ürünlerini tercih
+              edin. Deniz Ürünleri İzleme Rehberlerini kullanın ve aşırı
+              avlanmış türlerden kaçının.
+            </p>
+          </div>
+          <div class="card">
+            <h4>Atık Azaltma ve Geri Dönüşüm</h4>
+            <img
+              src="https://source.unsplash.com/random/400x300/?reduce-waste"
+              alt="Atık Azaltma"
+            />
+            <p>
+              Tek kullanımlık plastikleri azaltın, mümkün olduğunca geri
+              dönüştürün ve atıklarınızı doğru şekilde yönetin. Plaj
+              temizliklerine katılın.
+            </p>
+          </div>
+          <div class="card">
+            <h4>Enerji Tasarrufu</h4>
+            <img
+              src="https://source.unsplash.com/random/400x300/?energy-saving"
+              alt="Enerji Tasarrufu"
+            />
+            <p>
+              Karbon ayak izinizi azaltmak için enerji tüketiminizi düşürün.
+              Toplu taşımayı kullanın, enerji verimli cihazlar tercih edin ve
+              gereksiz ışıkları kapatın.
+            </p>
+          </div>
+          <div class="card">
+            <h4>Farkındalık Yaratma</h4>
+            <img
+              src="https://source.unsplash.com/random/400x300/?environmental-awareness"
+              alt="Çevre Farkındalığı"
+            />
+            <p>
+              Çevrenizdeki insanları deniz kirliliği ve ekosistemlerin korunması
+              konusunda bilgilendirin. Sosyal medyayı ve kişisel ağınızı
+              kullanarak farkındalık oluşturun.
+            </p>
+          </div>
+        </div>
+        <h3>Destekleyebileceğiniz Kuruluşlar:</h3>
+        <ul>
+          <li>
+            <strong>WWF (Dünya Doğayı Koruma Vakfı):</strong> Deniz yaşamını ve
+            habitatları korumak için küresel çapta çalışır.
+          </li>
+          <li>
+            <strong>Greenpeace:</strong> Deniz kirliliği ve aşırı avlanmaya
+            karşı kampanyalar yürütür.
+          </li>
+          <li>
+            <strong>Ocean Conservancy:</strong> Okyanus temizliği ve koruma
+            projeleriyle ilgilenir.
+          </li>
+          <li>
+            <strong>Yerel Deniz Koruma Dernekleri:</strong> Kendi bölgenizdeki
+            deniz ekosistemlerini korumak için çalışan kuruluşları destekleyin.
+          </li>
+        </ul>
+        <p>
+          Unutmayın, küçük adımlar bile büyük değişimlere yol açabilir.
+          Gezegenimizin su altı hazinelerini korumak hepimizin
+          sorumluluğundadır.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Balıklar ve Ben. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <div id="coral-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3>Mercan Resifleri: Denizlerin Yağmur Ormanları</h3>
+        <p>
+          Mercan resifleri, okyanuslardaki en biyolojik çeşitli ekosistemlerdir
+          ve dünyanın en zengin deniz yaşamına ev sahipliği yaparlar. Balıklar,
+          omurgasızlar ve sayısız diğer deniz canlıları için barınma, beslenme
+          ve üreme alanı sağlarlar. Ancak iklim değişikliği, okyanus asitlenmesi
+          ve kirlilik gibi tehditler nedeniyle ciddi risk altındadırlar. Mercan
+          beyazlaması, artan su sıcaklıklarının mercanların alglerle olan
+          simbiyotik ilişkisini bozması sonucu meydana gelir ve resiflerin
+          ölümüne yol açabilir.
+        </p>
+        <p>
+          Mercan resifleri aynı zamanda kıyı şeritlerini fırtınalardan ve
+          erozyondan koruyarak kıyı toplulukları için doğal bir bariyer görevi
+          görür.
+        </p>
+      </div>
+    </div>
+
+    <div id="deep-sea-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3>Derin Deniz Hendekleri: Gizemli Dünyalar</h3>
+        <p>
+          Derin deniz hendekleri, okyanusların en derin ve en az keşfedilmiş
+          bölgeleridir. Güneş ışığının ulaşmadığı bu bölgelerde, aşırı basınç,
+          soğuk sıcaklıklar ve sınırlı besin kaynakları gibi zorlu koşullar
+          hüküm sürer. Buna rağmen, burada yaşayan canlılar (örneğin, fener
+          balıkları, deniz salyangozları) benzersiz adaptasyonlar
+          geliştirmiştir.
+        </p>
+        <p>
+          Bu ekosistemler, kimyasal enerjiye dayalı kemosentez gibi farklı besin
+          zincirleriyle işleyebilir ve dünya üzerindeki yaşamın adaptasyon
+          kapasitesinin şaşırtıcı örneklerini sunar. Ancak, derin deniz
+          madenciliği gibi potansiyel yeni tehditlerle karşı karşıyadırlar.
+        </p>
+      </div>
+    </div>
+
+    <div id="mangrove-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h3>Mangrov Ormanları: Kıyıların Koruyucuları</h3>
+        <p>
+          Mangrov ormanları, tropikal ve subtropikal kıyı bölgelerinde bulunan,
+          tuzlu suya adapte olmuş ağaçlardan oluşan eşsiz ekosistemlerdir. Bu
+          ormanlar, birçok balık, kabuklu ve kuş türü için hayati bir yaşam
+          alanı, özellikle de genç balıklar için bir "kreş" görevi görür.
+        </p>
+        <p>
+          Mangrovlar, kıyı şeritlerini fırtına dalgalarından ve tsunamilerden
+          koruyan doğal bariyerler oluşturur. Aynı zamanda, su kalitesini
+          iyileştirir ve karbon depolayarak iklim değişikliğiyle mücadelede
+          önemli bir rol oynarlar. Ne yazık ki, insan gelişimi ve tarım
+          nedeniyle hızla yok olmaktadırlar.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // --- JavaScript Kodları ---
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll("nav ul li a");
+        const sections = document.querySelectorAll("section");
+        const accordions = document.querySelectorAll(".accordion");
+        const openModalBtns = document.querySelectorAll(".open-modal-btn");
+        const modals = document.querySelectorAll(".modal");
+        const closeButtons = document.querySelectorAll(".close-button");
+
+        // --- Sayfa Yüklenince İlk Bölümü Göster ---
+        sections[0].classList.add("active");
+
+        // --- Navigasyon Bağlantılarını Dinleme (Tek Sayfa Gezinme) ---
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault(); // Varsayılan bağlantı davranışını engelle
+
+            const targetSectionId = link.getAttribute("data-section");
+            const targetSection = document.getElementById(targetSectionId);
+
+            // Tüm bölümleri gizle
+            sections.forEach((s) => s.classList.remove("active"));
+
+            // Hedef bölümü göster
+            targetSection.classList.add("active");
+
+            // Sayfayı ilgili bölüme kaydır (smooth scroll)
+            targetSection.scrollIntoView({ behavior: "smooth" });
+          });
+        });
+
+        // --- Akordiyon İşlevselliği ---
+        accordions.forEach((accordion) => {
+          accordion.addEventListener("click", function () {
+            this.classList.toggle("active-accordion");
+            const panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+              panel.style.maxHeight = null;
+            } else {
+              panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+          });
+        });
+
+        // --- Modal (Pop-up) İşlevselliği ---
+        openModalBtns.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            const modalId = btn.getAttribute("data-modal-id");
+            const modal = document.getElementById(modalId);
+            modal.style.display = "flex"; // Modalı görünür yap
+          });
+        });
+
+        closeButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            btn.closest(".modal").style.display = "none"; // Modalı gizle
+          });
+        });
+
+        // Modala dışına tıklanınca gizle
+        modals.forEach((modal) => {
+          modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+              modal.style.display = "none";
+            }
+          });
+        });
+
+        // --- Scroll Animasyonu (Bölümlerin Görünür Olması) ---
+        const observerOptions = {
+          root: null, // Viewport'u kök olarak kullan
+          rootMargin: "0px",
+          threshold: 0.1, // %10'u görünür olduğunda tetikle
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+              // İsteğe bağlı: Bir kez göründükten sonra gözlemlemeyi bırakabilirsiniz
+              // observer.unobserve(entry.target);
+            } else {
+              // Eğer isterseniz, ekrandan çıktığında eski haline döndürebilirsiniz
+              // entry.target.classList.remove('active');
+            }
+          });
+        }, observerOptions);
+
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      });
+    </script>
+  </body>
+</html>

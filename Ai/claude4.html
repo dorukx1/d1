@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balıklar ve Ben</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Navigation */
+      nav {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      nav.scrolled {
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      nav.scrolled .logo {
+        color: #333;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      nav.scrolled .nav-links a {
+        color: #333;
+      }
+
+      .nav-links a:hover {
+        color: #ffd700;
+        transform: translateY(-2px);
+      }
+
+      /* Main Content */
+      main {
+        margin-top: 80px;
+      }
+
+      .page {
+        display: none;
+        min-height: calc(100vh - 80px);
+        padding: 2rem 0;
+      }
+
+      .page.active {
+        display: block;
+        animation: fadeInUp 0.6s ease;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: 4rem 0;
+        color: white;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .cta-button {
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Cards */
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 2rem;
+        color: white;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #ffd700;
+      }
+
+      .card p {
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+
+      /* Fish Species Grid */
+      .species-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 2rem 0;
+      }
+
+      .species-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .species-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .species-image {
+        height: 200px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: white;
+      }
+
+      .species-info {
+        padding: 1.5rem;
+      }
+
+      .species-info h4 {
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+
+      .species-info p {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      /* Modal */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 2000;
+        backdrop-filter: blur(5px);
+      }
+
+      .modal-content {
+        background: white;
+        margin: 5% auto;
+        padding: 2rem;
+        width: 90%;
+        max-width: 600px;
+        border-radius: 15px;
+        position: relative;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #666;
+      }
+
+      .close:hover {
+        color: #333;
+      }
+
+      /* Interactive Elements */
+      .interactive-section {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 2rem;
+        margin: 2rem 0;
+        color: white;
+      }
+
+      .quiz-container {
+        text-align: center;
+      }
+
+      .quiz-question {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .quiz-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin: 1rem 0;
+      }
+
+      .quiz-option {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: none;
+        padding: 1rem;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .quiz-option:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .quiz-option.correct {
+        background: #4caf50;
+      }
+
+      .quiz-option.incorrect {
+        background: #f44336;
+      }
+
+      /* Environmental Impact Section */
+      .impact-meter {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 1rem;
+        margin: 1rem 0;
+        color: white;
+      }
+
+      .meter-bar {
+        background: rgba(255, 255, 255, 0.2);
+        height: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 0.5rem 0;
+      }
+
+      .meter-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #4caf50, #ff9800, #f44336);
+        width: 0%;
+        transition: width 2s ease;
+        border-radius: 10px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .card-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .species-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Footer */
+      footer {
+        background: rgba(0, 0, 0, 0.3);
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="container">
+        <a href="#" class="logo">🐟 Balıklar ve Ben</a>
+        <ul class="nav-links">
+          <li><a onclick="showPage('home')">Ana Sayfa</a></li>
+          <li><a onclick="showPage('species')">Balık Türleri</a></li>
+          <li><a onclick="showPage('ecology')">Ekoloji</a></li>
+          <li><a onclick="showPage('environment')">Çevre Etkileri</a></li>
+          <li><a onclick="showPage('quiz')">Bilgi Testi</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Ana Sayfa -->
+      <div id="home" class="page active">
+        <div class="hero">
+          <div class="container">
+            <h1>Balıklar ve Ben</h1>
+            <p>Suların derinliklerinde yaşayan muhteşem canlıları keşfedin</p>
+            <button class="cta-button" onclick="showPage('species')">
+              Keşfetmeye Başla
+            </button>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="card-grid">
+            <div class="card" onclick="showPage('species')">
+              <h3>🐠 Balık Türleri</h3>
+              <p>
+                Dünyada 34,000'den fazla balık türü bulunmaktadır. Tropik renkli
+                balıklardan derin deniz canavarlarına kadar çeşitlilik keşfedin.
+              </p>
+            </div>
+            <div class="card" onclick="showPage('ecology')">
+              <h3>🌊 Ekolojik Sistem</h3>
+              <p>
+                Balıkların doğadaki rolü ve deniz ekosistemindeki kritik önemini
+                öğrenin. Gıda zinciri ve biyolojik denge hakkında bilgi edinin.
+              </p>
+            </div>
+            <div class="card" onclick="showPage('environment')">
+              <h3>⚠️ Çevre Tehditleri</h3>
+              <p>
+                İklim değişikliği, plastik kirlilik ve aşırı avlanmanın deniz
+                yaşamına etkilerini keşfedin.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Balık Türleri -->
+      <div id="species" class="page">
+        <div class="container">
+          <h2
+            style="
+              text-align: center;
+              color: white;
+              margin-bottom: 2rem;
+              font-size: 2.5rem;
+            "
+          >
+            Fascinasyonlu Balık Türleri
+          </h2>
+
+          <div class="species-grid">
+            <div
+              class="species-card"
+              onclick="showFishDetails('Büyük Beyaz Köpekbalığı', 'Carcharodon carcharias', 'Okyanusların en büyük avcı balığı. 6 metre uzunluğa ulaşabilir ve 2 ton ağırlığında olabilir. 400 milyon yıldır evrim geçirmiştir.')"
+            >
+              <div class="species-image">🦈</div>
+              <div class="species-info">
+                <h4>Büyük Beyaz Köpekbalığı</h4>
+                <p>Okyanusların en üst düzey avcısı</p>
+              </div>
+            </div>
+
+            <div
+              class="species-card"
+              onclick="showFishDetails('Palyaço Balığı', 'Amphiprion ocellatus', 'Anemonlarla simbiyotik ilişki kurar. Cinsiyet değiştirebilme özelliği vardır. Tüm palyaço balıkları erkek doğar, gerektiğinde dişiye dönüşür.')"
+            >
+              <div class="species-image">🐠</div>
+              <div class="species-info">
+                <h4>Palyaço Balığı</h4>
+                <p>Anemonlarla yaşayan renkli balık</p>
+              </div>
+            </div>
+
+            <div
+              class="species-card"
+              onclick="showFishDetails('Mavi Balina', 'Balaenoptera musculus', 'Dünyanın en büyük hayvanı. 30 metre uzunluğa ulaşabilir ve kalbi bir otomobil kadar büyüktür. Günde 4 ton kril yiyebilir.')"
+            >
+              <div class="species-image">🐋</div>
+              <div class="species-info">
+                <h4>Mavi Balina</h4>
+                <p>Gezegenin en büyük canlısı</p>
+              </div>
+            </div>
+
+            <div
+              class="species-card"
+              onclick="showFishDetails('Elektriki Ray', 'Torpedo torpedo', 'Vücudunda elektrik üretebilen organları vardır. 220 volt elektrik üretebilir. Avlarını felç ederek yakalar.')"
+            >
+              <div class="species-image">⚡</div>
+              <div class="species-info">
+                <h4>Elektrikli Ray</h4>
+                <p>Doğal elektrik üreticisi</p>
+              </div>
+            </div>
+
+            <div
+              class="species-card"
+              onclick="showFishDetails('Anglerfish', 'Lophiiformes', 'Derin deniz balığı. Başında ışık çıkaran organ bulunur. Bu ışıkla avlarını kendine çeker. 1000 metreye kadar derinliklerde yaşar.')"
+            >
+              <div class="species-image">🔦</div>
+              <div class="species-info">
+                <h4>Anglerfish</h4>
+                <p>Derin denizin ışık avcısı</p>
+              </div>
+            </div>
+
+            <div
+              class="species-card"
+              onclick="showFishDetails('Denizatı', 'Hippocampus', 'Erkek denizatları hamile kalır ve yumurtaları taşır. Gözleri bağımsız hareket edebilir ve kuyruklarıyla tutunabilirler.')"
+            >
+              <div class="species-image">🐴</div>
+              <div class="species-info">
+                <h4>Denizatı</h4>
+                <p>Eşsiz hamilelik özelliği</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ekoloji -->
+      <div id="ecology" class="page">
+        <div class="container">
+          <h2
+            style="
+              text-align: center;
+              color: white;
+              margin-bottom: 2rem;
+              font-size: 2.5rem;
+            "
+          >
+            Deniz Ekolojisi
+          </h2>
+
+          <div class="interactive-section">
+            <h3>🌊 Gıda Zinciri Simülasyonu</h3>
+            <p>
+              Aşağıdaki butona tıklayarak deniz gıda zincirini görselleştirin:
+            </p>
+            <button
+              class="cta-button"
+              onclick="animateFoodChain()"
+              style="margin: 1rem 0"
+            >
+              Gıda Zincirini Başlat
+            </button>
+            <div
+              id="foodChainAnimation"
+              style="
+                min-height: 200px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 2rem;
+              "
+            >
+              <div
+                class="food-chain-item"
+                style="opacity: 0; transition: all 1s ease"
+              >
+                🦠 Fitoplankton
+              </div>
+              <div style="opacity: 0; transition: all 1s ease">→</div>
+              <div
+                class="food-chain-item"
+                style="opacity: 0; transition: all 1s ease"
+              >
+                🦐 Zooplankton
+              </div>
+              <div style="opacity: 0; transition: all 1s ease">→</div>
+              <div
+                class="food-chain-item"
+                style="opacity: 0; transition: all 1s ease"
+              >
+                🐟 Küçük Balık
+              </div>
+              <div style="opacity: 0; transition: all 1s ease">→</div>
+              <div
+                class="food-chain-item"
+                style="opacity: 0; transition: all 1s ease"
+              >
+                🦈 Büyük Balık
+              </div>
+            </div>
+          </div>
+
+          <div class="card-grid">
+            <div class="card">
+              <h3>🏝️ Mercan Resifleri</h3>
+              <p>
+                Mercan resifleri, okyanusların %1'inden azını kaplar ancak tüm
+                deniz türlerinin %25'ine ev sahipliği yapar. Tropik denizlerin
+                yağmur ormanları olarak bilinirler.
+              </p>
+            </div>
+            <div class="card">
+              <h3>🌊 Derin Deniz Ekolojisi</h3>
+              <p>
+                1000 metreden derin sularda yaşayan balıklar, güneş ışığı
+                olmadan yaşamı sürdürür. Kemossentez ile enerji üretirler.
+              </p>
+            </div>
+            <div class="card">
+              <h3>🔄 Oksijen Döngüsü</h3>
+              <p>
+                Okyanuslardaki fitoplanktonlar, dünya atmosferinin %70'ini
+                oluşturan oksijeni üretir. Balıklar bu döngünün kritik bir
+                parçasıdır.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Çevre Etkileri -->
+      <div id="environment" class="page">
+        <div class="container">
+          <h2
+            style="
+              text-align: center;
+              color: white;
+              margin-bottom: 2rem;
+              font-size: 2.5rem;
+            "
+          >
+            🌍 İnsan Kaynaklı Çevre Tehditleri
+          </h2>
+
+          <div class="interactive-section">
+            <h3>⚠️ Çevre Kirliliği Etki Ölçer</h3>
+            <p>Aşağıdaki faktörlerin deniz yaşamına etkisini görün:</p>
+
+            <div class="impact-meter">
+              <h4>🏭 Endüstriyel Atık</h4>
+              <div class="meter-bar">
+                <div class="meter-fill" data-impact="85"></div>
+              </div>
+              <p>Deniz ekosistemini %85 etkiliyor</p>
+            </div>
+
+            <div class="impact-meter">
+              <h4>🛢️ Petrol Sızıntıları</h4>
+              <div class="meter-bar">
+                <div class="meter-fill" data-impact="90"></div>
+              </div>
+              <p>Deniz yaşamını %90 etkiliyor</p>
+            </div>
+
+            <div class="impact-meter">
+              <h4>🗑️ Plastik Kirliliği</h4>
+              <div class="meter-bar">
+                <div class="meter-fill" data-impact="95"></div>
+              </div>
+              <p>Okyanus yaşamını %95 etkiliyor</p>
+            </div>
+
+            <div class="impact-meter">
+              <h4>🌡️ İklim Değişikliği</h4>
+              <div class="meter-bar">
+                <div class="meter-fill" data-impact="88"></div>
+              </div>
+              <p>Deniz sıcaklığını %88 etkiliyor</p>
+            </div>
+
+            <button
+              class="cta-button"
+              onclick="animateImpactMeters()"
+              style="margin: 2rem 0"
+            >
+              Etki Analizini Başlat
+            </button>
+          </div>
+
+          <div class="card-grid">
+            <div class="card" style="border-left: 5px solid #f44336">
+              <h3>🗑️ Plastik Krizi</h3>
+              <p>
+                Her dakika 1 kamyon dolusu plastik okyanuslara atılıyor. 2050'ye
+                kadar okyanuslarda balıktan çok plastik olacak. Mikroplastikler
+                gıda zincirine karışarak tüm deniz yaşamını tehdit ediyor.
+              </p>
+            </div>
+            <div class="card" style="border-left: 5px solid #ff9800">
+              <h3>🎣 Aşırı Avlanma</h3>
+              <p>
+                Dünya balık stoklarının %90'ı aşırı avlanma nedeniyle tehlike
+                altında. Büyük avcı balıkların sayısı son 50 yılda %90 azaldı.
+                Dengeyi korumak için sürdürülebilir balıkçılık gerekli.
+              </p>
+            </div>
+            <div class="card" style="border-left: 5px solid #9c27b0">
+              <h3>🌡️ Okyanus Asitliği</h3>
+              <p>
+                CO2 artışı okyanusları asitleştiriyor. Deniz suyu pH'ı son 150
+                yılda %30 düştü. Bu durum mercanları ve kabuklulu deniz
+                canlılarını öldürüyor.
+              </p>
+            </div>
+            <div class="card" style="border-left: 5px solid #4caf50">
+              <h3>🏭 Kimyasal Kirlilik</h3>
+              <p>
+                Endüstriyel atıklar, tarım ilaçları ve evsel atıklar denizlere
+                karışıyor. Ağır metaller balıkların sinir sistemini bozuyor ve
+                üremeyi engelliyor.
+              </p>
+            </div>
+          </div>
+
+          <div class="interactive-section">
+            <h3>💡 Sen Ne Yapabilirsin?</h3>
+            <div class="card-grid">
+              <div class="card" style="background: rgba(76, 175, 80, 0.2)">
+                <h4>♻️ Plastik Kullanımını Azalt</h4>
+                <p>
+                  Tek kullanımlık plastikleri reddet, cam ve metal
+                  alternatiflerini tercih et.
+                </p>
+              </div>
+              <div class="card" style="background: rgba(33, 150, 243, 0.2)">
+                <h4>🐟 Sürdürülebilir Balık Tüket</h4>
+                <p>
+                  MSC sertifikalı balıkları tercih et, nesilleri tükenme
+                  tehlikesindeki balıkları tüketme.
+                </p>
+              </div>
+              <div class="card" style="background: rgba(255, 152, 0, 0.2)">
+                <h4>🚗 Karbon Ayak İzini Azalt</h4>
+                <p>
+                  Toplu taşıma kullan, enerji tasarrufu yap, yenilenebilir
+                  enerjiyi destekle.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz -->
+      <div id="quiz" class="page">
+        <div class="container">
+          <h2
+            style="
+              text-align: center;
+              color: white;
+              margin-bottom: 2rem;
+              font-size: 2.5rem;
+            "
+          >
+            🧠 Balık Bilgisi Testi
+          </h2>
+
+          <div class="quiz-container">
+            <div class="interactive-section">
+              <div class="quiz-question" id="quizQuestion">
+                Dünyanın en büyük balığı hangisidir?
+              </div>
+              <div class="quiz-options" id="quizOptions">
+                <button class="quiz-option" onclick="checkAnswer(this, true)">
+                  Balina Köpekbalığı
+                </button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">
+                  Büyük Beyaz Köpekbalığı
+                </button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">
+                  Hammerhead Köpekbalığı
+                </button>
+                <button class="quiz-option" onclick="checkAnswer(this, false)">
+                  Kaplan Köpekbalığı
+                </button>
+              </div>
+              <div
+                id="quizResult"
+                style="margin-top: 1rem; font-size: 1.2rem"
+              ></div>
+              <button
+                class="cta-button"
+                onclick="nextQuestion()"
+                id="nextBtn"
+                style="display: none; margin-top: 1rem"
+              >
+                Sonraki Soru
+              </button>
+            </div>
+
+            <div class="interactive-section">
+              <h3>📊 Test İstatistiklerin</h3>
+              <div id="quizStats">
+                <p>Doğru Cevap: <span id="correctCount">0</span></p>
+                <p>Toplam Soru: <span id="totalCount">0</span></p>
+                <p>Başarı Oranı: <span id="successRate">0%</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="fishModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <h4 id="modalScientific" style="color: #666; font-style: italic"></h4>
+        <p id="modalDescription"></p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>
+          &copy; 2024 Balıklar ve Ben | Doğayı koruyalım, balıkları koruyalım 🐟
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Navigation functionality
+      function showPage(pageId) {
+        // Hide all pages
+        const pages = document.querySelectorAll(".page");
+        pages.forEach((page) => {
+          page.classList.remove("active");
+        });
+
+        // Show selected page
+        document.getElementById(pageId).classList.add("active");
+
+        // Scroll to top
+        window.scrollTo(0, 0);
+      }
+
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Fish details modal
+      function showFishDetails(name, scientific, description) {
+        document.getElementById("modalTitle").textContent = name;
+        document.getElementById("modalScientific").textContent = scientific;
+        document.getElementById("modalDescription").textContent = description;
+        document.getElementById("fishModal").style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("fishModal").style.display = "none";
+      }
+
+      // Food chain animation
+      function animateFoodChain() {
+        const items = document.querySelectorAll("#foodChainAnimation > *");
+        items.forEach((item, index) => {
+          setTimeout(() => {
+            item.style.opacity = "1";
+            item.style.transform = "scale(1.1)";
+            setTimeout(() => {
+              item.style.transform = "scale(1)";
+            }, 300);
+          }, index * 500);
+        });
+      }
+
+      // Impact meters animation
+      function animateImpactMeters() {
+        const meters = document.querySelectorAll(".meter-fill");
+        meters.forEach((meter, index) => {
+          setTimeout(() => {
+            const impact = meter.getAttribute("data-impact");
+            meter.style.width = impact + "%";
+          }, index * 300);
+        });
+      }
+
+      // Quiz functionality
+      const quizQuestions = [
+        {
+          question: "Dünyanın en büyük balığı hangisidir?",
+          options: [
+            "Balina Köpekbalığı",
+            "Büyük Beyaz Köpekbalığı",
+            "Hammerhead Köpekbalığı",
+            "Kaplan Köpekbalığı",
+          ],
+          correct: 0,
+          explanation:
+            "Balina köpekbalığı 20 metre uzunluğa ulaşabilen dünyanın en büyük balığıdır.",
+        },
+        {
+          question: "Palyaço balıkları hangi özelliğe sahiptir?",
+          options: [
+            "Cinsiyet değiştirebilme",
+            "Elektrik üretme",
+            "Işık çıkarma",
+            "Uçabilme",
+          ],
+          correct: 0,
+          explanation:
+            "Palyaço balıkları gerektiğinde cinsiyetlerini değiştirebilir. Tümü erkek doğar.",
+        },
+        {
+          question: "Okyanusların kaçta kaçı plastik kirlilikten etkileniyor?",
+          options: ["Yarısı", "Üçte biri", "Tamamı", "Dörtte biri"],
+          correct: 2,
+          explanation:
+            "Tüm okyanuslar plastik kirlilikten etkileniyor. Mikroplastikler her yerde bulunuyor.",
+        },
+        {
+          question: "Mercan resifleri okyanusların yüzde kaçını kaplar?",
+          options: ["10%", "5%", "1%", "15%"],
+          correct: 2,
+          explanation:
+            "Mercan resifleri okyanusların sadece %1'ini kaplar ama deniz türlerinin %25'ine ev sahipliği yapar.",
+        },
+        {
+          question: "Hangi balık türü başında ışık çıkararak avlanır?",
+          options: ["Köpekbalığı", "Anglerfish", "Ton balığı", "Levrek"],
+          correct: 1,
+          explanation:
+            "Anglerfish derin denizlerde yaşar ve başındaki ışıkla avlarını kendine çeker.",
+        },
+      ];
+
+      let currentQuestionIndex = 0;
+      let correctAnswers = 0;
+      let totalAnswers = 0;
+
+      function checkAnswer(button, isCorrect) {
+        const options = document.querySelectorAll(".quiz-option");
+        options.forEach((option) => {
+          option.disabled = true;
+          if (option === button) {
+            if (isCorrect) {
+              option.classList.add("correct");
+              correctAnswers++;
+              document.getElementById("quizResult").innerHTML =
+                "✅ Doğru! " + quizQuestions[currentQuestionIndex].explanation;
+              document.getElementById("quizResult").style.color = "#4caf50";
+            } else {
+              option.classList.add("incorrect");
+              document.getElementById("quizResult").innerHTML =
+                "❌ Yanlış! " + quizQuestions[currentQuestionIndex].explanation;
+              document.getElementById("quizResult").style.color = "#f44336";
+            }
+          }
+        });
+
+        totalAnswers++;
+        updateQuizStats();
+        document.getElementById("nextBtn").style.display = "inline-block";
+      }
+
+      function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizQuestions.length) {
+          loadQuestion();
+        } else {
+          // Quiz completed
+          document.getElementById("quizQuestion").innerHTML =
+            "🎉 Testi Tamamladın!";
+          document.getElementById("quizOptions").innerHTML = "";
+          document.getElementById(
+            "quizResult"
+          ).innerHTML = `Toplam ${correctAnswers}/${totalAnswers} doğru cevap verdin!`;
+          document.getElementById("nextBtn").style.display = "none";
+
+          // Show restart button
+          const restartBtn = document.createElement("button");
+          restartBtn.className = "cta-button";
+          restartBtn.textContent = "Testi Yeniden Başlat";
+          restartBtn.onclick = restartQuiz;
+          restartBtn.style.marginTop = "1rem";
+          document.getElementById("quizOptions").appendChild(restartBtn);
+        }
+      }
+
+      function loadQuestion() {
+        const question = quizQuestions[currentQuestionIndex];
+        document.getElementById("quizQuestion").textContent = question.question;
+
+        const optionsContainer = document.getElementById("quizOptions");
+        optionsContainer.innerHTML = "";
+
+        question.options.forEach((option, index) => {
+          const button = document.createElement("button");
+          button.className = "quiz-option";
+          button.textContent = option;
+          button.onclick = () =>
+            checkAnswer(button, index === question.correct);
+          optionsContainer.appendChild(button);
+        });
+
+        document.getElementById("quizResult").innerHTML = "";
+        document.getElementById("nextBtn").style.display = "none";
+      }
+
+      function restartQuiz() {
+        currentQuestionIndex = 0;
+        correctAnswers = 0;
+        totalAnswers = 0;
+        updateQuizStats();
+        loadQuestion();
+      }
+
+      function updateQuizStats() {
+        document.getElementById("correctCount").textContent = correctAnswers;
+        document.getElementById("totalCount").textContent = totalAnswers;
+        const rate =
+          totalAnswers > 0
+            ? Math.round((correctAnswers / totalAnswers) * 100)
+            : 0;
+        document.getElementById("successRate").textContent = rate + "%";
+      }
+
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        const modal = document.getElementById("fishModal");
+        if (event.target === modal) {
+          closeModal();
+        }
+      };
+
+      // Initialize animations when page loads
+      window.addEventListener("load", function () {
+        // Auto-animate impact meters when environment page is first viewed
+        setTimeout(() => {
+          if (
+            document.getElementById("environment").classList.contains("active")
+          ) {
+            animateImpactMeters();
+          }
+        }, 1000);
+      });
+
+      // Add some interactive effects
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add floating animation to cards
+        const cards = document.querySelectorAll(".card, .species-card");
+        cards.forEach((card, index) => {
+          card.style.animationDelay = index * 0.1 + "s";
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener("scroll", function () {
+          const scrolled = window.pageYOffset;
+          const hero = document.querySelector(".hero");
+          if (hero) {
+            hero.style.transform = "translateY(" + scrolled * 0.5 + "px)";
+          }
+        });
+
+        // Add ripple effect to buttons
+        const buttons = document.querySelectorAll(".cta-button, .quiz-option");
+        buttons.forEach((button) => {
+          button.addEventListener("click", function (e) {
+            const ripple = document.createElement("span");
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: rgba(255, 255, 255, 0.6);
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        left: ${x}px;
+                        top: ${y}px;
+                        width: ${size}px;
+                        height: ${size}px;
+                        pointer-events: none;
+                    `;
+
+            this.style.position = "relative";
+            this.style.overflow = "hidden";
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+              ripple.remove();
+            }, 600);
+          });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement("style");
+        style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(4);
+                        opacity: 0;
+                    }
+                }
+                
+                .food-chain-item {
+                    font-size: 1.2rem;
+                    padding: 0.5rem 1rem;
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 20px;
+                    margin: 0.5rem;
+                }
+            `;
+        document.head.appendChild(style);
+      });
+
+      // Initialize quiz
+      loadQuestion();
+      updateQuizStats();
+    </script>
+  </body>
+</html>

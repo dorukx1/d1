@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balıklar ve Ben</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f8ff;
+      }
+      header {
+        background-color: #007bff;
+        color: white;
+        padding: 15px;
+        text-align: center;
+      }
+      nav {
+        background-color: #0056b3;
+        padding: 10px;
+        text-align: center;
+      }
+      nav a {
+        color: white;
+        margin: 0 10px;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      nav a:hover {
+        text-decoration: underline;
+      }
+      .container {
+        padding: 20px;
+        display: none;
+      }
+      .active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Balıklar ve Ben</h1>
+    </header>
+    <nav>
+      <a onclick="showSection('ana')">Ana Sayfa</a>
+      <a onclick="showSection('baliklar')">Balıklar Hakkında</a>
+      <a onclick="showSection('zarar')">Doğaya Zararlarımız</a>
+    </nav>
+
+    <section id="ana" class="container active">
+      <h2>Hoşgeldiniz!</h2>
+      <p>
+        Balıklar ve Ben sitesine hoş geldiniz. Doğa ve balıklar hakkında
+        bilgiler edinirken, insan olarak verdiğimiz zararı da gözden
+        geçireceğiz.
+      </p>
+    </section>
+
+    <section id="baliklar" class="container">
+      <h2>Balıklar Hakkında</h2>
+      <p>
+        Balıklar, suda yaşayan omurgalı canlılardır. Solungaç solunumu yaparlar
+        ve genellikle pullu bir deriyle kaplıdırlar. Dünyada yaklaşık 30.000'den
+        fazla balık türü bulunur.
+      </p>
+      <ul>
+        <li>Deniz balıkları</li>
+        <li>Tatlı su balıkları</li>
+        <li>Göç eden balıklar</li>
+      </ul>
+    </section>
+
+    <section id="zarar" class="container">
+      <h2>Doğaya Zararlarımız</h2>
+      <p>
+        İnsan aktiviteleri, balıkların yaşam alanlarını ciddi şekilde etkiliyor:
+      </p>
+      <ul>
+        <li>Aşırı avlanma ve stokların tükenmesi</li>
+        <li>Su kirliliği ve plastik atıklar</li>
+        <li>İklim değişikliği ve sıcaklık artışı</li>
+      </ul>
+      <p>
+        Bu zararları azaltmak için sürdürülebilir yöntemlere yönelmemiz
+        gerekiyor.
+      </p>
+    </section>
+
+    <script>
+      function showSection(sectionId) {
+        let sections = document.querySelectorAll(".container");
+        sections.forEach((section) => section.classList.remove("active"));
+
+        document.getElementById(sectionId).classList.add("active");
+      }
+    </script>
+  </body>
+</html>

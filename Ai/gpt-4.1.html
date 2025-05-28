@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balıklar ve Ben</title>
+    <style>
+      :root {
+        --primary: #2176ae;
+        --secondary: #ffcb77;
+        --background: #f5f5f5;
+        --surface: #fff;
+        --text: #222;
+        --shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+      }
+      [data-theme="dark"] {
+        --primary: #3ec6e0;
+        --secondary: #f59563;
+        --background: #151d28;
+        --surface: #253047;
+        --text: #eee;
+        --shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+      }
+      body {
+        background: var(--background);
+        color: var(--text);
+        font-family: "Segoe UI", sans-serif;
+        margin: 0;
+        min-height: 100vh;
+        transition: background 0.3s, color 0.3s;
+      }
+      header {
+        background: var(--primary);
+        color: #fff;
+        padding: 1rem 0.5rem;
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
+      .site-title {
+        font-size: 2rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+      nav {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      nav button {
+        background: var(--secondary);
+        color: #222;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        cursor: pointer;
+        font-size: 1rem;
+        box-shadow: var(--shadow);
+        transition: background 0.2s, color 0.2s;
+      }
+      nav button.active,
+      nav button:hover {
+        background: #fff;
+        color: var(--primary);
+        font-weight: bold;
+      }
+      .theme-toggle {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        font-size: 1.2rem;
+        margin-left: 1rem;
+        transition: color 0.2s;
+      }
+      main {
+        padding: 2rem 1rem;
+        max-width: 900px;
+        margin: 0 auto;
+        min-height: 60vh;
+      }
+      section {
+        display: none;
+        animation: fadeIn 0.6s;
+      }
+      section.active {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+      .card {
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        border-radius: 1.2rem;
+        overflow: hidden;
+        transition: transform 0.2s;
+        display: flex;
+        flex-direction: column;
+      }
+      .card:hover {
+        transform: translateY(-7px) scale(1.03);
+      }
+      .card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+      }
+      .card-content {
+        padding: 1rem;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .chart-container {
+        background: var(--surface);
+        border-radius: 1.2rem;
+        box-shadow: var(--shadow);
+        margin: 2rem 0;
+        padding: 1rem 2rem;
+        max-width: 600px;
+        overflow-x: auto;
+      }
+      .external-links {
+        margin: 2rem 0 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .external-links li {
+        margin-bottom: 1rem;
+      }
+      .external-links a {
+        color: var(--primary);
+        font-weight: 500;
+        text-decoration: underline;
+        transition: color 0.2s;
+      }
+      .external-links a:hover {
+        color: var(--secondary);
+      }
+      @media (max-width: 600px) {
+        .site-title {
+          font-size: 1.2rem;
+        }
+        nav {
+          gap: 0.4rem;
+        }
+        main {
+          padding: 1rem 0.1rem;
+        }
+        .card img {
+          height: 110px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="site-title">🐟 Balıklar ve Ben</span>
+      <nav>
+        <button data-page="home" class="active">Ana Sayfa</button>
+        <button data-page="types">Balık Türleri</button>
+        <button data-page="ecology">Balıkların Ekolojisi</button>
+        <button data-page="impact">İnsanların Doğaya Zararları</button>
+        <button data-page="sources">Kaynaklar</button>
+      </nav>
+      <button class="theme-toggle" title="Tema değiştir">🌙</button>
+    </header>
+    <main>
+      <!-- Ana Sayfa -->
+      <section id="home" class="active">
+        <h1>Balıklar ve Ben</h1>
+        <p>
+          Doğanın mucizelerinden biri olan balıkları keşfetmeye hoş geldiniz! Bu
+          siteyle birlikte balık türlerini, ekolojik rollerini, insan etkilerini
+          ve daha fazlasını öğrenebilirsiniz.
+        </p>
+        <ul>
+          <li>En popüler ve ilginç balık türleri</li>
+          <li>Ekosistemdeki yeri ve önemi</li>
+          <li>İnsan etkisi ve doğaya verilen zararlar</li>
+          <li>Kaynaklar ve bilimsel bağlantılar</li>
+        </ul>
+        <p><b>Haydi, birlikte derinlere dalalım!</b></p>
+      </section>
+      <!-- Balık Türleri -->
+      <section id="types">
+        <h1>Popüler ve İlginç Balık Türleri</h1>
+        <div class="card-grid">
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+              alt="Betta"
+            />
+            <div class="card-content">
+              <h2>Betta Balığı (Siyam Savaşçısı)</h2>
+              <p>
+                Renkli görünümüyle akvaryumların gözdesidir. Agresif doğası ile
+                bilinir.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=400&q=80"
+              alt="Palyaço Balığı"
+            />
+            <div class="card-content">
+              <h2>Palyaço Balığı</h2>
+              <p>
+                Mercan resiflerinde yaşayan ve simbiyotik ilişkileriyle bilinen
+                bu tür, ünlü "Nemo" filminden tanınır.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80"
+              alt="Köpekbalığı"
+            />
+            <div class="card-content">
+              <h2>Köpekbalığı</h2>
+              <p>
+                Okyanusların zirve avcısıdır. Binlerce yıldır evrimleşerek
+                mükemmel avcıya dönüşmüştür.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80"
+              alt="Mandarin Balığı"
+            />
+            <div class="card-content">
+              <h2>Mandarin Balığı</h2>
+              <p>
+                Müthiş renklere ve desenlere sahip olan, nadir görülen bir
+                türdür.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Balıkların Ekolojisi -->
+      <section id="ecology">
+        <h1>Balıkların Ekolojideki Yeri</h1>
+        <p>
+          Balıklar, ekosistemlerin sağlıklı işleyişinde çok önemli rol oynar.
+          Hem avcı hem av olarak, besin zincirinin kritik bir parçasıdırlar.
+          Birçok balık türü, su ekosistemlerinin biyolojik çeşitliliğini ve
+          dengesini sağlar.
+        </p>
+        <ul>
+          <li>Planktondan köpekbalığına kadar geniş bir beslenme skalası</li>
+          <li>Habitatlar arası besin ve enerji transferi</li>
+          <li>Su kalitesinin ve ekosistem sağlığının göstergeleri</li>
+          <li>Bazı türler tarım, tıp ve endüstride bile kullanılmaktadır</li>
+        </ul>
+        <img
+          src="https://images.unsplash.com/photo-1444065381814-865dc9da92c0?auto=format&fit=crop&w=800&q=80"
+          alt="Ekosistem"
+          style="
+            width: 100%;
+            border-radius: 1.2rem;
+            box-shadow: var(--shadow);
+            margin: 2rem 0;
+          "
+        />
+      </section>
+      <!-- İnsanların Doğaya Zararları -->
+      <section id="impact">
+        <h1>İnsanların Balık Popülasyonlarına ve Doğaya Zararları</h1>
+        <p>
+          Ne yazık ki insan faaliyetleri, balık türlerini ve yaşadıkları
+          ekosistemleri tehdit etmektedir. Özellikle aşırı avlanma, su kirliliği
+          ve habitat kaybı, balık popülasyonlarında büyük düşüşlere sebep
+          olmaktadır.
+        </p>
+        <ul>
+          <li><b>Aşırı Avlanma:</b> Bazı türlerin yok olma riski artıyor.</li>
+          <li>
+            <b>Deniz Kirliliği:</b> Plastik ve kimyasal atıklar suyu kirletiyor.
+          </li>
+          <li>
+            <b>İklim Değişikliği:</b> Okyanus sıcaklıkları artıyor, türler göç
+            etmek zorunda kalıyor.
+          </li>
+          <li>
+            <b>Habitat Tahribatı:</b> Kıyı yapılaşmaları, mercan resiflerinin
+            yok oluşu.
+          </li>
+        </ul>
+        <div class="chart-container">
+          <canvas id="popChart" width="500" height="260"></canvas>
+          <p style="text-align: center; font-size: 0.95rem">
+            1970-2020 Arası Balık Popülasyonu (örnek veri, % değişim)
+          </p>
+        </div>
+      </section>
+      <!-- Kaynaklar -->
+      <section id="sources">
+        <h1>Kaynaklar &amp; Daha Fazla Bilgi</h1>
+        <ul class="external-links">
+          <li>
+            <a
+              href="https://www.wwf.org.tr/yasam/baliklar/"
+              target="_blank"
+              rel="noopener"
+              >WWF Türkiye: Balıklar ve Yaşam</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.nationalgeographic.com/animals/fish"
+              target="_blank"
+              rel="noopener"
+              >National Geographic: Fish</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://tr.wikipedia.org/wiki/Bal%C4%B1k"
+              target="_blank"
+              rel="noopener"
+              >Wikipedia: Balık</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.marineconservation.org.uk/pages/bal%C4%B1klar.html"
+              target="_blank"
+              rel="noopener"
+              >Marine Conservation Society</a
+            >
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer
+      style="
+        text-align: center;
+        padding: 2rem 0 1rem 0;
+        font-size: 1rem;
+        color: var(--primary);
+      "
+    >
+      &copy; 2025 Balıklar ve Ben | Tüm hakları saklıdır.
+    </footer>
+    <script>
+      // SPA Geçişleri
+      const navButtons = document.querySelectorAll("nav button");
+      const sections = document.querySelectorAll("main section");
+      function showSection(pageId) {
+        sections.forEach((s) => s.classList.remove("active"));
+        document.getElementById(pageId).classList.add("active");
+        navButtons.forEach((b) => b.classList.remove("active"));
+        navButtons.forEach((b) =>
+          b.dataset.page === pageId ? b.classList.add("active") : null
+        );
+        // Sayfa başlığını değiştir
+        document.title =
+          {
+            home: "Balıklar ve Ben",
+            types: "Balık Türleri | Balıklar ve Ben",
+            ecology: "Balıkların Ekolojisi | Balıklar ve Ben",
+            impact: "İnsan Etkisi | Balıklar ve Ben",
+            sources: "Kaynaklar | Balıklar ve Ben",
+          }[pageId] || "Balıklar ve Ben";
+      }
+      navButtons.forEach((btn) => {
+        btn.addEventListener("click", () => showSection(btn.dataset.page));
+      });
+
+      // Tema Değiştirici (Dark/Light)
+      const themeBtn = document.querySelector(".theme-toggle");
+      function setTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+        themeBtn.innerHTML = theme === "dark" ? "☀️" : "🌙";
+      }
+      themeBtn.addEventListener("click", () => {
+        const curTheme =
+          document.documentElement.getAttribute("data-theme") || "light";
+        setTheme(curTheme === "dark" ? "light" : "dark");
+      });
+      // Tema başlangıç kontrolü
+      (() => {
+        const stored = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        setTheme(stored || (prefersDark ? "dark" : "light"));
+      })();
+
+      // Balık Popülasyon Grafiği
+      function drawChart() {
+        const c = document.getElementById("popChart");
+        if (!c) return;
+        const ctx = c.getContext("2d");
+        ctx.clearRect(0, 0, c.width, c.height);
+        // Basit çizgi grafik - örnek veriler
+        const data = [100, 90, 75, 68, 54, 40, 32]; // Yüzde
+        const years = [1970, 1980, 1990, 2000, 2010, 2015, 2020];
+        const w = c.width - 60,
+          h = c.height - 50;
+        const x0 = 40,
+          y0 = 20;
+        // Eksenler
+        ctx.strokeStyle = "#999";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(x0, y0);
+        ctx.lineTo(x0, y0 + h);
+        ctx.lineTo(x0 + w, y0 + h);
+        ctx.stroke();
+        // Y ekseni etiketler
+        ctx.fillStyle = "#666";
+        for (let i = 0; i <= 5; i++) {
+          let y = y0 + h - (i * h) / 5;
+          ctx.fillText(i * 25 + "%", 4, y + 4);
+          ctx.beginPath();
+          ctx.moveTo(x0 - 4, y);
+          ctx.lineTo(x0, y);
+          ctx.stroke();
+        }
+        // X ekseni etiketler
+        for (let i = 0; i < years.length; i++) {
+          let x = x0 + (i * w) / (years.length - 1);
+          ctx.fillText(years[i], x - 13, y0 + h + 20);
+          ctx.beginPath();
+          ctx.moveTo(x, y0 + h);
+          ctx.lineTo(x, y0 + h + 4);
+          ctx.stroke();
+        }
+        // Grafik çiz
+        ctx.strokeStyle = "#2176ae";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        for (let i = 0; i < data.length; i++) {
+          let x = x0 + (i * w) / (data.length - 1);
+          let y = y0 + h - (data[i] / 125) * h; // 100% üstten biraz boşluk için 125
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+          // Nokta
+          ctx.beginPath();
+          ctx.arc(x, y, 4, 0, Math.PI * 2);
+          ctx.fillStyle = "#ffcb77";
+          ctx.fill();
+          ctx.stroke();
+        }
+        ctx.stroke();
+      }
+      // Sayfa yüklendiğinde ve boyut değiştiğinde grafik çiz
+      window.addEventListener("DOMContentLoaded", drawChart);
+      window.addEventListener("resize", drawChart);
+
+      // Sayfa geçişlerinde grafiği tekrar çiz
+      document
+        .querySelector('nav button[data-page="impact"]')
+        .addEventListener("click", drawChart);
+    </script>
+  </body>
+</html>

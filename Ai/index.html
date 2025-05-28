@@ -6,37 +6,48 @@
     <title>Button Links</title>
     <style>
       body {
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(45deg, #2193b0, #6dd5ed);
-        font-family: Arial, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(45deg, #2193b0, #6dd5ed);
+      font-family: Arial, sans-serif;
       }
       .button-container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        padding: 20px;
-        max-width: 800px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      width: 95%;
+      max-width: 1200px;
       }
       .button {
-        padding: 20px;
-        border: none;
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-        transition: transform 0.3s, box-shadow 0.3s;
-        text-decoration: none;
-        color: #333;
-        text-align: center;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: #333;
+      text-align: center;
+      font-size: clamp(14px, 2vw, 16px);
       }
       .button:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        background: white;
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      background: white;
+      }
+      @media (max-width: 600px) {
+      .button-container {
+        grid-template-columns: 1fr;
+        width: 90%;
+      }
+      .button {
+        padding: 12px;
+      }
       }
     </style>
   </head>

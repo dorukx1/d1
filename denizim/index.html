@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love Story 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(ellipse at center, #fff5f5 0%, #ffe4e1 25%, #ffd1dc 50%, #ffb6c1 75%, #dda0dd 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Dreamy floating elements */
+        .dream-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .dream-particle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(255, 182, 193, 0.4), rgba(255, 192, 203, 0.6), rgba(255, 218, 185, 0.3));
+            animation: dreamFloat 12s ease-in-out infinite;
+            filter: blur(1px);
+        }
+
+        @keyframes dreamFloat {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px) scale(1);
+                opacity: 0.3;
+            }
+            25% { 
+                transform: translateY(-30px) translateX(15px) scale(1.2);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: translateY(-15px) translateX(-10px) scale(0.8);
+                opacity: 0.6;
+            }
+            75% { 
+                transform: translateY(-45px) translateX(20px) scale(1.1);
+                opacity: 0.7;
+            }
+        }
+
+        /* Enhanced flying hearts */
+        .heart-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 16px;
+            animation: flyHeart 10s ease-in-out infinite;
+            opacity: 0;
+            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.5));
+        }
+
+        @keyframes flyHeart {
+            0% {
+                transform: translateY(100vh) translateX(-20px) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) translateX(-10px) rotate(30deg) scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translateY(50vh) translateX(15px) rotate(180deg) scale(1.2);
+            }
+            80% {
+                opacity: 0.9;
+                transform: translateY(20vh) translateX(-5px) rotate(300deg) scale(1);
+            }
+            100% {
+                transform: translateY(-50px) translateX(10px) rotate(360deg) scale(0.3);
+                opacity: 0;
+            }
+        }
+
+        /* Aurora background effect */
+        .aurora {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(255, 182, 193, 0.1) 0%, 
+                rgba(255, 218, 185, 0.15) 25%, 
+                rgba(255, 192, 203, 0.1) 50%, 
+                rgba(221, 160, 221, 0.15) 75%, 
+                rgba(255, 182, 193, 0.1) 100%);
+            animation: auroraMove 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes auroraMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Enhanced header */
+        .header {
+            text-align: center;
+            margin: 80px 0 60px 0;
+            animation: gentleFadeIn 3s ease-out;
+        }
+
+        .main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff1744, #f50057, #e91e63, #ad1457);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .main-title::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.1), rgba(255, 182, 193, 0.1));
+            border-radius: 20px;
+            z-index: -1;
+            filter: blur(20px);
+        }
+
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #8e44ad;
+            margin-bottom: 40px;
+            font-style: italic;
+            text-shadow: 0 2px 10px rgba(142, 68, 173, 0.2);
+            animation: subtitleGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes subtitleGlow {
+            0%, 100% { text-shadow: 0 2px 10px rgba(142, 68, 173, 0.2); }
+            50% { text-shadow: 0 2px 20px rgba(142, 68, 173, 0.4); }
+        }
+
+        /* Enhanced content sections */
+        .content-section {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 30px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 
+                0 20px 50px rgba(0,0,0,0.1),
+                0 0 0 1px rgba(255, 182, 193, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            animation: sectionFloat 3s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 182, 193, 0.15), transparent);
+            animation: shimmerWave 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmerWave {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            font-weight: 600;
+            background: linear-gradient(45deg, #d63384, #8e44ad, #6f42c1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .section-text {
+            font-size: 1.2rem;
+            color: #6c5ce7;
+            line-height: 2;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* Embedded Photo Gallery */
+        .embedded-photo-gallery {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .main-photo {
+            margin-bottom: 30px;
+        }
+
+        .photo-frame {
+            position: relative;
+            display: inline-block;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 
+                0 20px 50px rgba(0,0,0,0.15),
+                0 0 0 8px rgba(255, 255, 255, 0.5),
+                0 0 30px rgba(255, 105, 180, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            padding: 10px;
+        }
+
+        .photo-frame:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.2),
+                0 0 0 12px rgba(255, 255, 255, 0.6),
+                0 0 40px rgba(255, 105, 180, 0.4);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: transform 0.4s ease;
+        }
+
+        .photo-frame:hover img {
+            transform: scale(1.05);
+        }
+
+        .main-photo .photo-frame {
+            width: 400px;
+            height: 300px;
+        }
+
+        .photo-frame.small {
+            width: 180px;
+            height: 180px;
+        }
+
+        .photo-row {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: white;
+            padding: 20px 15px 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .photo-frame:hover .photo-overlay {
+            transform: translateY(0);
+        }
+
+        .photo-overlay span {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* Additional photo section in memories */
+        .memory-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 15px;
+            margin: 15px auto;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .memory-photo:hover {
+            transform: scale(1.1);
+        }
+
+        .memory-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Magical photo placeholder for empty state */
+        .photo-placeholder {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #ffcccb 0%, #ffb6c1 50%, #ffc0cb 100%);
+            border-radius: 50%;
+            margin: 30px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #d63384;
+            box-shadow: 
+                0 15px 40px rgba(0,0,0,0.15),
+                0 0 0 8px rgba(255, 255, 255, 0.3),
+                0 0 30px rgba(255, 105, 180, 0.3);
+            animation: photoFloat 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: photoShine 3s ease-in-out infinite;
+        }
+
+        @keyframes photoFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        @keyframes photoShine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Enhanced memory boxes */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .memory-box {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.1),
+                0 0 0 1px rgba(255, 182, 193, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(255, 182, 193, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff69b4, #ff1744, #e91e63);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .memory-box:hover::before {
+            transform: translateX(0);
+        }
+
+        .memory-box:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .memory-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #d63384;
+            margin-bottom: 15px;
+        }
+
+        .memory-date {
+            font-size: 1rem;
+            color: #8e44ad;
+            font-style: italic;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        /* Enhanced love button */
+        .love-button {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff8cc8 50%, #ffa8e4 100%);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 
+                0 10px 30px rgba(255, 107, 157, 0.4),
+                0 0 0 0 rgba(255, 107, 157, 0.5);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .love-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .love-button:hover::before {
+            left: 100%;
+        }
+
+        .love-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 15px 40px rgba(255, 107, 157, 0.5),
+                0 0 0 8px rgba(255, 107, 157, 0.1);
+        }
+
+        .love-button:active {
+            transform: translateY(-2px);
+        }
+
+        /* Message styling */
+        #love-message {
+            margin-top: 30px;
+            font-size: 1.4rem;
+            font-family: 'Dancing Script', cursive;
+            font-weight: 600;
+            color: #d63384;
+            text-shadow: 0 2px 10px rgba(214, 51, 132, 0.2);
+        }
+
+        /* Enhanced sparkles */
+        .sparkle {
+            position: absolute;
+            font-size: 16px;
+            animation: sparkleEnhanced 3s ease-in-out infinite;
+            pointer-events: none;
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+        }
+
+        @keyframes sparkleEnhanced {
+            0%, 100% { 
+                opacity: 0; 
+                transform: scale(0) rotate(0deg); 
+            }
+            25% { 
+                opacity: 1; 
+                transform: scale(1.2) rotate(90deg); 
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: scale(1) rotate(180deg); 
+            }
+            75% { 
+                opacity: 1; 
+                transform: scale(1.3) rotate(270deg); 
+            }
+        }
+
+        /* Global animations */
+        @keyframes gentleFadeIn {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 50px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes sectionFloat {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 80px, 0) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0) scale(1);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 3rem;
+            }
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            .content-section {
+                padding: 30px 25px;
+                margin: 25px 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            .photo-frame {
+                width: 350px;
+                height: 250px;
+            }
+            .photo-frame.small {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Love cursor trail */
+        .cursor-trail {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            font-size: 12px;
+            animation: cursorFade 1.5s ease-out forwards;
+        }
+
+        @keyframes cursorFade {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Aurora background -->
+    <div class="aurora"></div>
+    
+    <!-- Dream particles -->
+    <div class="dream-particles"></div>
+    
+    <!-- Flying hearts -->
+    <div class="heart-container"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="main-title">Seni Sonsuzca Seviyorum</h1>
+            <p class="subtitle">Sen benim ruhuma dokunmuş en güzel melodisin DENİZİM...</p>
+        </header>
+
+        <!-- About Us Section -->
+        <section class="content-section">
+            <h2 class="section-title">Bizim Masalımız</h2>
+            <p class="section-text">
+                Gözlerinin derinliklerinde kaybolduğum ilk andan beri, hayatım bambaşka bir anlam kazandı. 
+                Sen sadece sevgilim değil, ruhun eşi, kalbimin sakinissin. Her nefesimde adın, 
+                her gülümsememde sen varsın. Bu site, sonsuz aşkımızın küçük bir yansıması...
+            </p>
+            
+            <!-- Embedded Photo Gallery -->
+            <div class="embedded-photo-gallery">
+                <div class="main-photo">
+                    <div class="photo-frame">
+                        <img src="F4.jpg" alt="Ana Fotoğrafımız">
+                        <div class="photo-overlay">
+                            <span>SACLARA BAK YERIM</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="photo-row">
+                    <div class="photo-frame small">
+                        <img src="F3.jpg" alt="İkinci Fotoğraf">
+                        <div class="photo-overlay">
+                            <span>💖 Daha güzel takılar alıcam sana </span>
+                        </div>
+                    </div>
+                    
+                    <div class="photo-frame small">
+                        <img src="F2.jpg" alt="Üçüncü Fotoğraf">
+                        <div class="photo-overlay">
+                            <span>✨ O gitarı birlikte çalıcaz</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Interactive Section -->
+        <section class="content-section">
+            <h2 class="section-title">Kalbimdeki Sırlar</h2>
+            <p class="section-text">
+                Bu butona her bastığında, kalbimin derinliklerinden sana bir mesaj ulaşsın...
+            </p>
+            <button class="love-button" onclick="showLove()">✨ Sihirli Dokunuş ✨</button>
+            <div id="love-message"></div>
+        </section>
+
+        <!-- Future Dreams -->
+        <section class="content-section">
+            <h2 class="section-title">Yarınlarımızın Hayali</h2>
+            <p class="section-text">
+                Seninle kurduğum her hayal bir pırlanta gibi parlıyor. Beraber izleyeceğimiz gün doğumları, 
+                el ele yürüyeceğimiz sahiller... 
+                Geleceğin en güzel resmini seninle çiziyorum. Çünkü sen varsın ya, 
+                her şey mükemmel olacak.
+            </p>
+        </section>
+
+        <!-- Love Declaration -->
+        <section class="content-section">
+            <h2 class="section-title">Aşk Itirafım</h2>
+            <p class="section-text" style="font-size: 1.3rem; font-weight: 400;">
+                Eğer yıldızlar dilek tutmak içinse, ben hepsini sana adamıştım. 
+                Eğer denizler aşkı anlatmak içinse, en derin okyanus bile yetmez benim aşkıma. 
+                Sen benim ilk ve son aşkımsın, ruhun eşim, kalbimin kraliçesi. 
+                Seni sevmek hayatımın en güzel mucizesi. ❤️
+            </p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Unutma Balım</h2>
+            <p class="section-text" style="font-size: 1.3rem; font-weight: 400;">
+                Seni her şeyden, herkesten çok seviyorum. Sana olan sevgim asla kelimelerle ölçülemez ❤️
+            </p>
+        </section>
+    </div>
+
+    <script>
+        // Enhanced heart creation
+        const heartEmojis = ['💕', '💖', '💗', '💘', '❤️', '💙', '💜', '🧡', '💚', '🤍', '🖤'];
+        
+        function createEnhancedHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+            heart.style.animationDuration = (Math.random() * 4 + 8) + 's';
+            heart.style.animationDelay = Math.random() * 3 + 's';
+            heart.style.fontSize = (Math.random() * 10 + 16) + 'px';
+            
+            document.querySelector('.heart-container').appendChild(heart);
+            
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.remove();
+                }
+            }, 12000);
+        }
+
+        // Create hearts more frequently
+        setInterval(createEnhancedHeart, 600);
+
+        // Dream particles
+        function createDreamParticles() {
+            const container = document.querySelector('.dream-particles');
+            for (let i = 0; i < 80; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'dream-particle';
+                particle.style.left = Math.random() * window.innerWidth + 'px';
+                particle.style.top = Math.random() * window.innerHeight + 'px';
+                particle.style.width = (Math.random() * 8 + 4) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 12 + 's';
+                particle.style.animationDuration = (Math.random() * 6 + 8) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Enhanced love messages
+        const deepLoveMessages = [
+            "Sen benim kalbimin tek sahibisin... 💕",
+            "Gözlerin benim için cennet kapısı ✨",
+            "Seninle her gün yeniden doğuyorum 🌅",
+            "Aşkımız yıldızlardan daha parlak 🌟",
+            "Sen benim ruhumun ikiz yarısısın 💫",
+            "Kalbim sadece senin adını biliyor 💖",
+            "Seninle sonsuzluk bile kısa gelir ♾️",
+            "Sen benim en güzel hayalimin gerçeği 🌙",
+            "Aşkın gücüyle her şey mümkün 🦋",
+            "Sen olmadan nefes alamıyorum 🌸",
+            "Kalbimin ritmi senin adınla atıyor 💓",
+            "Sen benim için yazılmış en güzel şarkısın 🎵"
+        ];
+
+        function showLove() {
+            const messageDiv = document.getElementById('love-message');
+            const randomMessage = deepLoveMessages[Math.floor(Math.random() * deepLoveMessages.length)];
+            messageDiv.innerHTML = randomMessage;
+            
+            // Enhanced sparkle effect
+            createMagicalSparkles();
+            
+            // Message animation
+            messageDiv.style.animation = 'gentleFadeIn 1.2s ease-out';
+            setTimeout(() => {
+                messageDiv.style.animation = '';
+            }, 1200);
+        }
+
+        // Magical sparkles
+        function createMagicalSparkles() {
+            const sparkleEmojis = ['✨', '⭐', '🌟', '💫', '⚡', '🔥', '💎'];
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    sparkle.innerHTML = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
+                    sparkle.style.left = (Math.random() * window.innerWidth) + 'px';
+                    sparkle.style.top = (Math.random() * window.innerHeight) + 'px';
+                    sparkle.style.color = ['#FFD700', '#FF69B4', '#9370DB', '#FF1493'][Math.floor(Math.random() * 4)];
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => {
+                        if (sparkle.parentNode) {
+                            sparkle.remove();
+                        }
+                    }, 3000);
+                }, i * 150);
+            }
+        }
+
+        // Cursor love trail
+        let mouseTrail = [];
+        const trailEmojis = ['💕', '💖', '✨', '💫'];
+        
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.3) {
+                const trail = document.createElement('div');
+                trail.className = 'cursor-trail';
+                trail.innerHTML = trailEmojis[Math.floor(Math.random() * trailEmojis.length)];
+                trail.style.left = e.clientX + 'px';
+                trail.style.top = e.clientY + 'px';
+                document.body.appendChild(trail);
+                
+                setTimeout(() => {
+                    if (trail.parentNode) {
+                        trail.remove();
+                    }
+                }, 1500);
+            }
+        });
+
+        // Section animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'sectionFloat 1.5s ease-out';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.content-section').forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+        // Photo upload functionality
+        let uploadedPhotos = [];
+        const fileInput = document.getElementById('file-input');
+        const uploadArea = document.querySelector('.upload-area');
+        const photoGallery = document.getElementById('photo-gallery');
+        const defaultPlaceholder = document.getElementById('default-placeholder');
+
+        // File input change event
+        fileInput.addEventListener('change', handleFiles);
+
+        // Drag and drop events
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            handleFiles({ target: { files } });
+        });
+
+        function handleFiles(event) {
+            const files = Array.from(event.target.files);
+            
+            files.forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        addPhotoToGallery(e.target.result, file.name);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        function addPhotoToGallery(src, name) {
+            const photoId = Date.now() + Math.random();
+            uploadedPhotos.push({ id: photoId, src, name });
+            
+            // Hide default placeholder
+            defaultPlaceholder.style.display = 'none';
+            
+            // Create photo item
+            const photoItem = document.createElement('div');
+            photoItem.className = 'photo-item';
+            photoItem.innerHTML = `
+                <img src="${src}" alt="${name}">
+                <button class="photo-remove" onclick="removePhoto(${photoId})">×</button>
+                <div class="photo-caption">${name}</div>
+            `;
+            
+            photoGallery.appendChild(photoItem);
+            
+            // Add entrance animation
+            setTimeout(() => {
+                photoItem.style.animation = 'gentleFadeIn 0.8s ease-out';
+            }, 100);
+        }
+
+        function removePhoto(photoId) {
+            uploadedPhotos = uploadedPhotos.filter(photo => photo.id !== photoId);
+            
+            // Find and remove the photo item
+            const photoItems = photoGallery.querySelectorAll('.photo-item');
+            photoItems.forEach(item => {
+                const removeButton = item.querySelector('.photo-remove');
+                if (removeButton.getAttribute('onclick').includes(photoId)) {
+                    item.style.animation = 'fadeOut 0.5s ease-out';
+                    setTimeout(() => {
+                        item.remove();
+                        
+                        // Show placeholder if no photos left
+                        if (uploadedPhotos.length === 0) {
+                            defaultPlaceholder.style.display = 'flex';
+                        }
+                    }, 500);
+                }
+            });
+        }
+
+        // Initial magical atmosphere
+        setTimeout(() => {
+            createMagicalSparkles();
+        }, 1000);
+        
+        // Random sparkles throughout the page
+        setInterval(() => {
+            if (Math.random() < 0.1) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.innerHTML = '✨';
+                sparkle.style.left = Math.random() * window.innerWidth + 'px';
+                sparkle.style.top = Math.random() * window.innerHeight + 'px';
+                sparkle.style.color = '#FFD700';
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    if (sparkle.parentNode) {
+                        sparkle.remove();
+                    }
+                }, 3000);
+            }
+        }, 2000);
+
+        // Initialize everything
+        createDreamParticles();
+    </script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayşegül — İsmin Kökeni, Anlamı ve Hikâyesi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="petalCanvas" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span>AYŞEGÜL <small>// Etimoloji &amp; Kültür</small></span>
+    </div>
+    <nav class="top-actions">
+      <button id="burstBtn" class="btn btn-glow" type="button" title="Gül yaprağı yağmuru başlat">
+        ✨ Gül Yağmuru
+      </button>
+      <button id="themeToggle" class="btn btn-ghost" type="button" aria-label="Temayı değiştir">
+        🌙 Gece Modu
+      </button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="badge">İsim Etimolojisi &amp; İnteraktif Rehber</div>
+      <h1 class="hero-title">
+        <span class="name-part part-ayse">Ayşe</span><span class="name-part part-gul">gül</span>
+      </h1>
+      <p class="hero-subtitle">
+        Arapça kökenli <strong>“yaşayan, dirlik içinde olan”</strong> anlamındaki <em>Ayşe</em> ile
+        Farsça kökenli <strong>“gül, zarafet”</strong> anlamındaki <em>Gül</em> kelimelerinin
+        Türkçe isim geleneğinde buluştuğu zarif bir bileşim.
+      </p>
+
+      <div class="hero-controls">
+        <button class="btn btn-primary" data-scroll="#etymology" type="button">
+          🔍 Kökeni Çözümle
+        </button>
+        <button class="btn btn-secondary" id="playNameMelody" type="button">
+          🎵 İsmin Melodisini Çal
+        </button>
+        <button class="btn btn-ghost" data-scroll="#interactive-lab" type="button">
+          ⚡ Etkileşimli Alan
+        </button>
+      </div>
+
+      <div class="quick-stats">
+        <div class="stat-pill">
+          <span class="stat-label">Köken</span>
+          <span class="stat-value">Arapça + Farsça</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-label">Anlam Özeti</span>
+          <span class="stat-value">Gül Gibi Yaşayan</span>
+        </div>
+        <div class="stat-pill">
+          <span class="stat-label">Hece Yapısı</span>
+          <span class="stat-value">Ay · şe · gül (3 Hece)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ETYMOLOGY SPLITTER -->
+    <section id="etymology" class="card section">
+      <div class="section-header">
+        <h2>1. Köken Çözümleyici</h2>
+        <p>Butonlara tıklayarak ismin iki parçasını ve birleşik anlamını incele.</p>
+      </div>
+
+      <div class="tab-bar" role="tablist" aria-label="Köken sekmeleri">
+        <button class="tab-btn active" data-tab="ayse" role="tab" aria-selected="true" type="button">
+          🌿 Ayşe (İlk Kök)
+        </button>
+        <button class="tab-btn" data-tab="gul" role="tab" aria-selected="false" type="button">
+          🌹 Gül (İkinci Kök)
+        </button>
+        <button class="tab-btn" data-tab="birlesim" role="tab" aria-selected="false" type="button">
+          ✨ Ayşegül (Bütünü)
+        </button>
+      </div>
+
+      <div class="tab-panels">
+        <article class="tab-panel active" id="panel-ayse">
+          <div class="origin-grid">
+            <div class="origin-script-box">
+              <span class="script-lang">Arapça Köken</span>
+              <div class="script-word" dir="rtl">عائشة</div>
+              <span class="script-translit">ʿĀʾişe (Âişe)</span>
+            </div>
+            <div class="origin-details">
+              <h3>Yaşayan, Huzur ve Refah İçinde Olan</h3>
+              <p>
+                Arapça <strong>“ayş” (عيش)</strong> yani <em>yaşam, hayat, dirlik</em> kökünden türemiştir.
+                Kelime olarak “yaşayan, canlı, rahat ve huzurlu bir hayat süren” anlamına gelir.
+              </p>
+              <ul class="detail-list">
+                <li><strong>Tarihsel İz:</strong> İslam tarihinde ilmi, güçlü hafızası ve bilgeliğiyle tanınan Hz. Ayşe'den dolayı yüzyıllardır en sevilen isimlerden biridir.</li>
+                <li><strong>Türkçeleşme:</strong> Türkçede yumuşayarak “Ayşe” biçimini almış ve birçok bileşik ismin temel taşı olmuştur.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="tab-panel" id="panel-gul">
+          <div class="origin-grid">
+            <div class="origin-script-box">
+              <span class="script-lang">Farsça Köken</span>
+              <div class="script-word" dir="rtl">گل</div>
+              <span class="script-translit">Gol / Gül</span>
+            </div>
+            <div class="origin-details">
+              <h3>Çiçeklerin Sultanı, Zarafet ve Güzellik</h3>
+              <p>
+                Farsçada genel olarak <strong>“çiçek”</strong> ve özel olarak <strong>“gül”</strong> anlamına gelen
+                <em>gol</em> kelimesinden Türkçeye geçmiştir.
+              </p>
+              <ul class="detail-list">
+                <li><strong>Edebi Sembolizm:</strong> Divan edebiyatında ve halk kültüründe sevginin, inceliğin, güzel kokunun ve baharın sembolüdür.</li>
+                <li><strong>İsim Geleneği:</strong> Türkçede kadın isimlerinin sonuna veya başına eklenerek isme şiirsel bir zarafet katar (Ayşegül, Gülay, Songül vb.).</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="tab-panel" id="panel-birlesim">
+          <div class="origin-grid">
+            <div class="origin-script-box combo-box">
+              <span class="script-lang">Türkçe Sentez</span>
+              <div class="script-word combo-word">Ayşe + Gül</div>
+              <span class="script-translit">Kültürel Bileşik İsim</span>
+            </div>
+            <div class="origin-details">
+              <h3>“Gül Gibi Yaşayan, Zarif ve Mutlu Hayat”</h3>
+              <p>
+                İki farklı dilin en güçlü iki kavramı—<strong>hayat/dirlik</strong> ve <strong>gül/zarafet</strong>—Türkçe
+                isim kültüründe bir araya gelerek tek bir akıcı isim oluşturur.
+              </p>
+              <ul class="detail-list">
+                <li><strong>Bütünleşik Anlam:</strong> Ömrü gül gibi güzel, huzurlu ve bereketli geçen kişi.</li>
+                <li><strong>Popüler Kültür:</strong> Türkiye'de kuşaklar boyu sevilen klasik bir isim olmasının yanı sıra, ünlü <em>Ayşegül</em> çocuk kitapları serisiyle de hafızalarda yer edinmiştir.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE LAB -->
+    <section id="interactive-lab" class="two-col">
+      <!-- SYLLABLE & SOUND -->
+      <div class="card section">
+        <div class="section-header">
+          <h2>2. Hece &amp; Ses Atölyesi</h2>
+          <p>Hecelere tıkla, Web Audio ile melodisini duy ve ses yapısını keşfet.</p>
+        </div>
+
+        <div class="syllable-row">
+          <button class="syllable-btn" data-note="523.25" data-info="AY: Açık ve güçlü başlangıç hecesi. Güneş ve Ay imgesini çağrıştıran parlak bir ton taşır." type="button">
+            <span class="syl-text">AY</span>
+            <span class="syl-note">Do₅</span>
+          </button>
+          <button class="syllable-btn" data-note="659.25" data-info="ŞE: Yumuşak 'ş' ünsüzüyle isme akıcılık ve sıcaklık katan orta hece." type="button">
+            <span class="syl-text">ŞE</span>
+            <span class="syl-note">Mi₅</span>
+          </button>
+          <button class="syllable-btn" data-note="783.99" data-info="GÜL: İnce ünlüyle kapanan, kulağa zarif ve şiirsel bir final bırakan son hece." type="button">
+            <span class="syl-text">GÜL</span>
+            <span class="syl-note">Sol₅</span>
+          </button>
+        </div>
+
+        <div class="info-banner" id="syllableInfo">
+          Bir heceye tıkla; hem notasını çalsın hem de fonetik özelliğini göstersin.
+        </div>
+      </div>
+
+      <!-- LETTER EXPLORER -->
+      <div class="card section">
+        <div class="section-header">
+          <h2>3. Harf Harf Akrostiş</h2>
+          <p>Harflere tıklayarak Ayşegül'ün her harfine yüklenen anlamı aç.</p>
+        </div>
+
+        <div class="letter-grid" id="letterGrid">
+          <button class="letter-btn active" data-letter="A" type="button">A</button>
+          <button class="letter-btn" data-letter="Y" type="button">Y</button>
+          <button class="letter-btn" data-letter="Ş" type="button">Ş</button>
+          <button class="letter-btn" data-letter="E" type="button">E</button>
+          <button class="letter-btn" data-letter="G" type="button">G</button>
+          <button class="letter-btn" data-letter="Ü" type="button">Ü</button>
+          <button class="letter-btn" data-letter="L" type="button">L</button>
+        </div>
+
+        <div class="letter-display" id="letterDisplay">
+          <span class="letter-badge">A</span>
+          <div>
+            <strong id="letterTitle">Asalet ve Aydınlık</strong>
+            <p id="letterDesc">Girdiği ortama ışık ve duru bir enerji katan başlangıç harfi.</p>
+          </div>
+        </div>
+
+        <button class="btn btn-secondary full-width" id="revealAllLetters" type="button">
+          📜 Tüm Akrostişi Göster
+        </button>
+      </div>
+    </section>
+
+    <!-- QUOTE & MOOD GENERATOR -->
+    <section class="card section quote-section">
+      <div class="section-header">
+        <h2>4. Ayşegül Modu &amp; Söz Üretici</h2>
+        <p>Butona bas, ismin ruhuna uygun yeni bir cümle veya unvan üret.</p>
+      </div>
+
+      <blockquote class="quote-box" id="quoteBox">
+        “Hayatın canlılığını (Ayşe) ve baharın zarafetini (Gül) aynı isimde taşıyan nadide bir imza.”
+      </blockquote>
+
+      <div class="quote-actions">
+        <button class="btn btn-primary" id="newQuoteBtn" type="button">
+          🎲 Yeni Söz Üret
+        </button>
+        <button class="btn btn-ghost" id="copyQuoteBtn" type="button">
+          📋 Sözü Kopyala
+        </button>
+        <span class="copy-toast" id="copyToast" role="status" aria-live="polite"></span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Ayşegül Etimoloji &amp; İnteraktif Kültür Sayfası • Özenle hazırlandı ✨</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
